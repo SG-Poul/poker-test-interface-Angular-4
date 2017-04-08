@@ -1,0 +1,5 @@
+<div id="base">
+  <div *ngFor="let player of players" (click)="onSelect(player)" class="players" id="p{{player.position}}">
+      <button (click)="choosePosition()">Sit Here on {{player.position}}</button>
+  </div>
+</div>

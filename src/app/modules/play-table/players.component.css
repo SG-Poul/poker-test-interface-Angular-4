@@ -1,0 +1,53 @@
+#base {
+  position: relative;
+  width: 600px;
+  height: 300px;
+  border: 1px solid black;
+}
+.players{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 3px solid darkred;
+}
+#p0 {
+  top: 5%;
+  left: 15%;
+}
+#p1 {
+  top: 5%;
+  left: 35%;
+}
+#p2 {
+  top: 5%;
+  left: 55%;
+}
+#p3 {
+  top: 5%;
+  left: 75%;
+}
+#p4 {
+  top: 30%;
+  right: 5%;
+}
+#p5 {
+  bottom: 5%;
+  left: 75%;
+}
+#p6 {
+  bottom: 5%;
+  left: 55%;
+}
+#p7 {
+  bottom: 5%;
+  left: 35%;
+}
+#p8 {
+  bottom: 5%;
+  left: 15%;
+}
+#p9 {
+  top: 30%;
+  left: 5%;
+}
+
