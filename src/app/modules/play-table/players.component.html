@@ -1,5 +1,12 @@
 <div id="base">
   <div *ngFor="let player of players" (click)="onSelect(player)" class="players" id="p{{player.position}}">
-      <button (click)="choosePosition()">Sit Here on {{player.position}}</button>
+    <div *ngIf="player.empty">
+      <img src="../../../assets/img/btn_position_0.png"
+           class="btn_position-img"
+           (mouseover)="btnLocationOver($event)"
+           (mousedown)="btnLocationDown($event)"
+           (mouseup)="btnLocationUp($event, player)"
+           (mouseleave)="btnLocationOut($event)">
+    </div>
   </div>
 </div>

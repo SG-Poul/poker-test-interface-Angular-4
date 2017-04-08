@@ -3,4 +3,5 @@
  */
 export class Player {
   position: number;
+  empty: boolean;
 }
