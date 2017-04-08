@@ -1,10 +1,17 @@
 #table {
-  width: 600px;
-  height: 300px;
+  width: 98%;
+  height: 98%;
   display: block;
-  margin: auto;
-  background-image: url(../../../assets/img/game_table.png);
-  background-size: contain;
+  /*background-image: url(../../../assets/img/game_table.png);*/
+  /*background-size: contain;*/
+  border: 2px dashed lightblue;
+}
+#table-img {
+  position: absolute;
+  display: inline;
+  max-width: 98%;
+  height: auto;
+  z-index: 0;
 }
 
 

@@ -1,53 +1,59 @@
 #base {
   position: relative;
-  width: 600px;
-  height: 300px;
+  width: 100%;
+  height: 0;
   border: 1px solid black;
+  z-index: 1;
+  padding-bottom: 67%;
 }
 .players{
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 13%;
+  height: 30%;
   border: 3px solid darkred;
 }
 #p0 {
-  top: 5%;
-  left: 15%;
+  top: 3%;
+  left: 22%;
 }
 #p1 {
-  top: 5%;
-  left: 35%;
+  top: 3%;
+  left: 37%;
 }
 #p2 {
-  top: 5%;
-  left: 55%;
+  top: 3%;
+  left: 52%;
 }
 #p3 {
-  top: 5%;
-  left: 75%;
+  top: 3%;
+  left: 67%;
 }
 #p4 {
-  top: 30%;
-  right: 5%;
+  top: 40%;
+  right: 0;
+  width: 20%;
+  height: 19%;
 }
 #p5 {
-  bottom: 5%;
-  left: 75%;
+  bottom: 3%;
+  left: 67%;
 }
 #p6 {
-  bottom: 5%;
-  left: 55%;
+  bottom: 3%;
+  left: 52%;
 }
 #p7 {
-  bottom: 5%;
-  left: 35%;
+  bottom: 3%;
+  left: 37%;
 }
 #p8 {
-  bottom: 5%;
-  left: 15%;
+  bottom: 3%;
+  left: 22%;
 }
 #p9 {
-  top: 30%;
-  left: 5%;
+  top: 40%;
+  left: 0;
+  width: 20%;
+  height: 19%;
 }
 
