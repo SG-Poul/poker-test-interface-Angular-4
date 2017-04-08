@@ -25,15 +25,21 @@ const PLAYERS: Player[] = [
 })
 export class PlayersComponent {
   title = 'This is play table!';
+  displayPositions = true;
+  displayPlayersPanel = false;
   players = PLAYERS;
+  currentPlayer: Player;
 
-  selectPosition(player: Player): void {
+  selectPlayer(player: Player): void {
     console.log('Position', player.position,  'is chosed');
-    player.empty = false;
+    this.currentPlayer = player;
+    this.displayPlayersPanel = true;
+    // player.empty = false;
   }
-  onSelect(player: Player): void {
-  }
-  /** visual hard coded*/
+
+
+
+  /** btn location*/
   btnLocationOver(event): void {
     event.target.setAttribute('src', '../../../assets/img/btn_position_1.png');
   }
@@ -42,7 +48,7 @@ export class PlayersComponent {
   }
   btnLocationUp(event, player: Player): void {
     event.target.setAttribute('src', '../../../assets/img/btn_position_0.png');
-    this.selectPosition(player);
+    this.selectPlayer(player);
   }
   btnLocationOut(event): void {
     event.target.setAttribute('src', '../../../assets/img/btn_position_0.png');

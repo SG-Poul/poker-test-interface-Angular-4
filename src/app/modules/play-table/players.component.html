@@ -1,12 +1,19 @@
 <div id="base">
-  <div *ngFor="let player of players" (click)="onSelect(player)" class="players" id="p{{player.position}}">
-    <div *ngIf="player.empty">
-      <img src="../../../assets/img/btn_position_0.png"
-           class="btn_position-img"
-           (mouseover)="btnLocationOver($event)"
-           (mousedown)="btnLocationDown($event)"
-           (mouseup)="btnLocationUp($event, player)"
-           (mouseleave)="btnLocationOut($event)">
-    </div>
+  <div *ngFor="let player of players" class="players" id="p{{player.position}}">
+    <div *ngIf="displayPositions && player.empty">
+        <img src="../../../assets/img/btn_position_0.png"
+             class="btn_position-img"
+             (mouseover)="btnLocationOver($event)"
+             (mousedown)="btnLocationDown($event)"
+             (mouseup)="btnLocationUp($event, player)"
+             (mouseleave)="btnLocationOut($event)">
+      </div>
   </div>
+
+  <div *ngIf="displayPlayersPanel" id="playerPanel">
+    <img src="../../../assets/img/panel.png" id="playerPanel-img">
+  </div>
+
 </div>
+
+

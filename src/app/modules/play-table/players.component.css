@@ -1,5 +1,6 @@
 #base {
   position: relative;
+  display: inline-block;
   width: 100%;
   height: 0;
   border: 1px solid black;
@@ -11,6 +12,7 @@
   width: 13%;
   height: 35%;
   border: 3px solid darkred;
+  z-index: 1;
 }
 .btn_position-img{
   height: auto;
@@ -81,5 +83,21 @@
     right: 0;
   width: auto;
   max-height: 100%;
+}
+
+#playerPanel {
+  position: relative;
+  width: 100%;
+  height: 0;
+  border: 2px double purple;
+  z-index: 2;
+  padding-bottom: 66%;
+
+}
+#playerPanel-img {
+  position: absolute;
+  max-width: 98%;
+  height: auto;
+  z-index: 2;
 }
 
