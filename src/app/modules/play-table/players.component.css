@@ -87,16 +87,19 @@
 
 #playerPanel {
   position: relative;
-  width: 100%;
+  margin-top: 10%;
+  display: inline-block;
+  left: 24%;
+  width: 50%;
   height: 0;
   border: 2px double purple;
   z-index: 2;
-  padding-bottom: 66%;
+  padding-bottom: 40%;
 
 }
 #playerPanel-img {
   position: absolute;
-  max-width: 98%;
+  max-width: 100%;
   height: auto;
   z-index: 2;
 }
