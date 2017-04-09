@@ -9,30 +9,63 @@
       </div>
   </div>
 
+  <div *ngIf="displayAppointeePanel" id="appointeePanel">
+    <img src="../../../assets/img/panel.png" id="appointeePanel-img">
+
+    <div class="panel-form-div container">
+      <form (ngSubmit)="panelSave()" #playersPanelForm="ngForm">
+
+        <h2 style="color: white">You are here</h2>
+
+        <div class="form-group" >
+          <label for="balance" style="color: white">Balance</label>
+          <input type="number" class="form-control" id="balance" required
+                 [(ngModel)]="playerPanelData.balance" name="balance">
+        </div>
+      </form>
+    </div>
+
+
+    <img *ngIf="playersPanelForm.form.valid"
+         [src]="b_Ok.srcNone" [class]="b_Ok.cssClass"
+         (mouseover)="b_Ok.onOver($event)"
+         (mousedown)="b_Ok.onDown($event)"
+         (mouseleave)="b_Ok.onOut($event)"
+         (mouseup)="b_Ok.onUp($event, player)">
+    <img [src]="b_Deny.srcNone" [class]="b_Deny.cssClass"
+         (mouseover)="b_Deny.onOver($event)"
+         (mousedown)="b_Deny.onDown($event)"
+         (mouseleave)="b_Deny.onOut($event)"
+         (mouseup)="b_Deny.onUp($event, player)">
+    <img [src]="b_Delete.srcNone" [class]="b_Delete.cssClass"
+         (mouseover)="b_Delete.onOver($event)"
+         (mousedown)="b_Delete.onDown($event)"
+         (mouseleave)="b_Delete.onOut($event)"
+         (mouseup)="b_Delete.onUp($event, player)">
+  </div>
+
   <div *ngIf="displayPlayersPanel" id="playerPanel">
     <img src="../../../assets/img/panel.png" id="playerPanel-img">
-
 
     <div class="panel-form-div container">
       <form (ngSubmit)="panelSave()" #playersPanelForm="ngForm">
         <div class="form-group">
           <label for="name" style="color: white">Nickname</label>
           <input type="text" class="form-control" id="name" required
-                 [(ngModel)]="currentPlayer.name" name="name">
+                 [(ngModel)]="playerPanelData.name" name="name">
         </div>
 
         <div class="form-group" >
           <label for="balance" style="color: white">Balance</label>
           <input type="number" class="form-control" id="balance" required
-                 [(ngModel)]="currentPlayer.balance" name="balance">
+                 [(ngModel)]="playerPanelData.balance" name="balance">
         </div>
-
-        <button type="submit" class="btn btn-success" [disabled]="!playersPanelForm.form.valid">>Submit</button>
       </form>
     </div>
 
 
-    <img [src]="b_Ok.srcNone" [class]="b_Ok.cssClass"
+    <img *ngIf="playersPanelForm.form.valid"
+         [src]="b_Ok.srcNone" [class]="b_Ok.cssClass"
          (mouseover)="b_Ok.onOver($event)"
          (mousedown)="b_Ok.onDown($event)"
          (mouseleave)="b_Ok.onOut($event)"

@@ -15,7 +15,7 @@
   z-index: 1;
 }
 
-#playerPanel {
+#playerPanel, #appointeePanel {
   position: relative;
   margin-top: 10%;
   display: inline-block;
@@ -27,7 +27,7 @@
   padding-bottom: 40%;
 
 }
-#playerPanel-img {
+#playerPanel-img, #appointeePanel-img {
   position: absolute;
   max-width: 100%;
   height: auto;
@@ -116,7 +116,7 @@
   z-index: 3;
 }
 .btn_position-img{
-  width: 43%;
+  width: 44%;
   height: 38%;
   position: absolute;
 }
@@ -144,8 +144,10 @@
 
 /* FORMS */
 .ng-valid[required], .ng-valid.required  {
-  border-left: 10px solid #42A948; /* green */
+  border-left: 10px solid #42A948;
+  border-right: 10px solid #42A948;
 }
 .ng-invalid:not(form)  {
-  border-left: 10px solid orangered; /* red */
+  border-left: 10px solid orangered;
+  border-right: 10px solid orangered;
 }

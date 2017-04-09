@@ -27,7 +27,13 @@ const PLAYERS: Player[] = [
 export class PlayersComponent {
   title = 'This is play table!';
   displayPositions = true;
+  displayAppointeePanel = false;
   displayPlayersPanel = false;
+  playerPanelData = {
+    name : null,
+    balance : null,
+  };
+
   players = PLAYERS;
   currentPlayer: Player;
 
@@ -37,36 +43,38 @@ export class PlayersComponent {
   b_Delete = new ButtonBase('delete', this.panelDelete.bind(this), 'player');
 
   selectPlayer(player: Player): void {
-    console.log('Position', player.position,  'is chosed');
     this.currentPlayer = player;
-    this.displayPlayersPanel = true;
-    // player.empty = false;
+    if (this.needToSetAppointee()) {
+      this.displayAppointeePanel = true;
+    } else {
+      this.displayPlayersPanel = true;
+    }
+    console.log('Densta: $', 'Method: selectPlayer', this.needToSetAppointee());
+    player.empty = false;
   }
 
   panelSave(player): void {
-    console.error('Densta: $', 'Method: save');
+    console.log('Densta: $', 'Method: save');
   }
   panelClose(player): void {
-    console.error('Densta: $', 'Method: close');
     this.displayPlayersPanel = false;
+    this.displayAppointeePanel = false;
+
+    this.playerPanelData.name = null;
+    this.playerPanelData.balance = null;
   }
   panelDelete(player): void {
-    console.error('Densta: $', 'Method: delete');
+    console.log('Densta: $', 'Method: delete');
     this.displayPlayersPanel = false;
+    this.displayAppointeePanel = false;
   }
 
-  /** btn location*/
-  btnLocationOver(event): void {
-    event.target.setAttribute('src', '../../../assets/img/btn_position_1.png');
-  }
-  btnLocationDown(event): void {
-    event.target.setAttribute('src', '../../../assets/img/btn_position_2.png');
-  }
-  btnLocationUp(event, player: Player): void {
-    event.target.setAttribute('src', '../../../assets/img/btn_position_0.png');
-    this.selectPlayer(player);
-  }
-  btnLocationOut(event): void {
-    event.target.setAttribute('src', '../../../assets/img/btn_position_0.png');
+  /** check if there are no players to define appointee position */
+  needToSetAppointee(): any {
+    let answer = true;
+    this.players.forEach(function (item) {
+      if (!item.empty) {answer = false; }
+    });
+    return answer;
   }
 }
