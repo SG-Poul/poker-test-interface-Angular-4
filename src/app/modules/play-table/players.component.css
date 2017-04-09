@@ -34,6 +34,14 @@
   z-index: 2;
 }
 
+.panel-form-div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  border: 2px solid white;
+}
+
 /* PLAYERS POSITIONS */
 
 #p0 {
@@ -107,7 +115,6 @@
   height: 28%;
   z-index: 3;
 }
-
 .btn_position-img{
   width: 43%;
   height: 38%;
@@ -133,4 +140,12 @@
   right: 10%;
   width: 28%;
   height: 70%;
+}
+
+/* FORMS */
+.ng-valid[required], .ng-valid.required  {
+  border-left: 10px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+  border-left: 10px solid orangered; /* red */
 }

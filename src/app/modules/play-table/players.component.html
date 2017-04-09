@@ -11,6 +11,27 @@
 
   <div *ngIf="displayPlayersPanel" id="playerPanel">
     <img src="../../../assets/img/panel.png" id="playerPanel-img">
+
+
+    <div class="panel-form-div container">
+      <form (ngSubmit)="panelSave()" #playersPanelForm="ngForm">
+        <div class="form-group">
+          <label for="name" style="color: white">Nickname</label>
+          <input type="text" class="form-control" id="name" required
+                 [(ngModel)]="currentPlayer.name" name="name">
+        </div>
+
+        <div class="form-group" >
+          <label for="balance" style="color: white">Balance</label>
+          <input type="number" class="form-control" id="balance" required
+                 [(ngModel)]="currentPlayer.balance" name="balance">
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!playersPanelForm.form.valid">>Submit</button>
+      </form>
+    </div>
+
+
     <img [src]="b_Ok.srcNone" [class]="b_Ok.cssClass"
          (mouseover)="b_Ok.onOver($event)"
          (mousedown)="b_Ok.onDown($event)"
@@ -29,5 +50,3 @@
   </div>
 
 </div>
-
-
