@@ -17,6 +17,16 @@
          (mousedown)="b_Ok.onDown($event)"
          (mouseleave)="b_Ok.onOut($event)"
          (mouseup)="b_Ok.onUp($event, player)">
+    <img [src]="b_Deny.srcNone" [class]="b_Deny.cssClass"
+         (mouseover)="b_Deny.onOver($event)"
+         (mousedown)="b_Deny.onDown($event)"
+         (mouseleave)="b_Deny.onOut($event)"
+         (mouseup)="b_Deny.onUp($event, player)">
+    <img [src]="b_Delete.srcNone" [class]="b_Delete.cssClass"
+         (mouseover)="b_Delete.onOver($event)"
+         (mousedown)="b_Delete.onDown($event)"
+         (mouseleave)="b_Delete.onOut($event)"
+         (mouseup)="b_Delete.onUp($event, player)">
   </div>
 
 </div>

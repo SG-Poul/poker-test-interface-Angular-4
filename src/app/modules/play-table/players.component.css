@@ -106,8 +106,26 @@
 
 .btn_ok-img {
   position: absolute;
-  max-width: 100%;
-  height: auto;
+  bottom: 5%;
+  right: 10%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_deny-img {
+  position: absolute;
+  bottom: 5%;
+  right: 37%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_delete-img {
+  position: absolute;
+  bottom: 5%;
+  right: 64%;
+  width: 25%;
+  height: 28%;
   z-index: 3;
 }
 
