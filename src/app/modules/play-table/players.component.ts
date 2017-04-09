@@ -38,6 +38,9 @@ export class PlayersComponent {
   currentPlayer: Player;
 
   b_Position = new ButtonBase('position', this.selectPlayerPosition.bind(this), 'player');
+  b_Name_appointee = new ButtonBase('name_appointee', this.selectPlayerName.bind(this), 'player');
+  b_Name_player = new ButtonBase('name_player', this.selectPlayerName.bind(this), 'player');
+
   b_Ok = new ButtonBase('ok', this.panelSave.bind(this), 'player');
   b_Deny = new ButtonBase('deny', this.panelClose.bind(this), 'player');
   b_Delete = new ButtonBase('delete', this.panelDelete.bind(this), 'player');
@@ -47,6 +50,18 @@ export class PlayersComponent {
     if (this.needToSetAppointee()) {
       this.displayAppointeePanel = true;
     } else {
+      this.displayPlayersPanel = true;
+    }
+  }
+
+  selectPlayerName(player: Player): void {
+    this.currentPlayer = player;
+    if (this.currentPlayer.isAppointee) {
+      this.playerPanelData.balance = player.balance;
+      this.displayAppointeePanel = true;
+    } else {
+      this.playerPanelData.name = player.name;
+      this.playerPanelData.balance = player.balance;
       this.displayPlayersPanel = true;
     }
   }
