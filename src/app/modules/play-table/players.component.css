@@ -14,11 +14,28 @@
   border: 3px solid darkred;
   z-index: 1;
 }
-.btn_position-img{
-  height: auto;
-  max-width: 100%;
-  position: absolute;
+
+#playerPanel {
+  position: relative;
+  margin-top: 10%;
+  display: inline-block;
+  left: 24%;
+  width: 50%;
+  height: 0;
+  border: 2px double purple;
+  z-index: 2;
+  padding-bottom: 40%;
+
 }
+#playerPanel-img {
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+  z-index: 2;
+}
+
+/* PLAYERS POSITIONS */
+
 #p0 {
   top: 0;
   left: 20%;
@@ -64,45 +81,7 @@
   height: 19%;
 }
 
-#p0 .btn_position-img, #p1 .btn_position-img, #p2 .btn_position-img, #p3 .btn_position-img {
-  bottom: 26%;
-  left: 22%;
-}
-#p5 .btn_position-img, #p6 .btn_position-img, #p7 .btn_position-img, #p8 .btn_position-img {
-  top: 0;
-  left: 22%;
-}
-#p4 .btn_position-img {
-  top: 0;
-  left: 0;
-  width: auto;
-  max-height: 100%;
-}
-#p9 .btn_position-img {
-    top: 0;
-    right: 0;
-  width: auto;
-  max-height: 100%;
-}
-
-#playerPanel {
-  position: relative;
-  margin-top: 10%;
-  display: inline-block;
-  left: 24%;
-  width: 50%;
-  height: 0;
-  border: 2px double purple;
-  z-index: 2;
-  padding-bottom: 40%;
-
-}
-#playerPanel-img {
-  position: absolute;
-  max-width: 100%;
-  height: auto;
-  z-index: 2;
-}
+/* BUTTONS */
 
 .btn_ok-img {
   position: absolute;
@@ -129,3 +108,29 @@
   z-index: 3;
 }
 
+.btn_position-img{
+  width: 43%;
+  height: 38%;
+  position: absolute;
+}
+
+#p0 .btn_position-img, #p1 .btn_position-img, #p2 .btn_position-img, #p3 .btn_position-img {
+  bottom: 26%;
+  left: 29%;
+}
+#p5 .btn_position-img, #p6 .btn_position-img, #p7 .btn_position-img, #p8 .btn_position-img {
+  top: 0;
+  left: 29%;
+}
+#p4 .btn_position-img {
+  top: 0;
+  left: 10%;
+  width: 28%;
+  height: 70%;
+}
+#p9 .btn_position-img {
+  top: 0;
+  right: 10%;
+  width: 28%;
+  height: 70%;
+}

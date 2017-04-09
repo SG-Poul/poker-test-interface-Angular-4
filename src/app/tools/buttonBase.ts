@@ -39,7 +39,7 @@ export class ButtonBase {
 
   onUp(event, argument): void {
     event.target.setAttribute('src', this.srcNone);
-    this.action(event, argument);
+    this.action(argument);
   }
 
   onOut(event): void {

@@ -31,6 +31,7 @@ export class PlayersComponent {
   players = PLAYERS;
   currentPlayer: Player;
 
+  b_Position = new ButtonBase('position', this.selectPlayer.bind(this), 'player');
   b_Ok = new ButtonBase('ok', this.panelSave.bind(this), 'player');
   b_Deny = new ButtonBase('deny', this.panelClose.bind(this), 'player');
   b_Delete = new ButtonBase('delete', this.panelDelete.bind(this), 'player');
@@ -42,14 +43,14 @@ export class PlayersComponent {
     // player.empty = false;
   }
 
-  panelSave(event, player): void {
+  panelSave(player): void {
     console.error('Densta: $', 'Method: save');
   }
-  panelClose(event, player): void {
+  panelClose(player): void {
     console.error('Densta: $', 'Method: close');
     this.displayPlayersPanel = false;
   }
-  panelDelete(event, player): void {
+  panelDelete(player): void {
     console.error('Densta: $', 'Method: delete');
     this.displayPlayersPanel = false;
   }
