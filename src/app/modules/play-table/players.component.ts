@@ -3,6 +3,7 @@
  */
 import {Component} from '@angular/core';
 import {Player} from '../../tools/player';
+import {ButtonBase} from '../../tools/buttonBase';
 
 // TEMP CONST FOR DEBUG
 const PLAYERS: Player[] = [
@@ -30,6 +31,8 @@ export class PlayersComponent {
   players = PLAYERS;
   currentPlayer: Player;
 
+  b_Ok = new ButtonBase('ok', this.savePanel.bind(this), 'player');
+
   selectPlayer(player: Player): void {
     console.log('Position', player.position,  'is chosed');
     this.currentPlayer = player;
@@ -37,7 +40,9 @@ export class PlayersComponent {
     // player.empty = false;
   }
 
-
+  savePanel(event, player): void {
+    console.error('Densta: $', 'Method: savePanel');
+  }
 
   /** btn location*/
   btnLocationOver(event): void {

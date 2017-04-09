@@ -12,6 +12,11 @@
 
   <div *ngIf="displayPlayersPanel" id="playerPanel">
     <img src="../../../assets/img/panel.png" id="playerPanel-img">
+    <img [src]="b_Ok.srcNone" [class]="b_Ok.cssClass"
+         (mouseover)="b_Ok.onOver($event)"
+         (mousedown)="b_Ok.onDown($event)"
+         (mouseleave)="b_Ok.onOut($event)"
+         (mouseup)="b_Ok.onUp($event, player)">
   </div>
 
 </div>

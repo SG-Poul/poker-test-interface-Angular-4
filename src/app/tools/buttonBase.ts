@@ -2,51 +2,61 @@
  * Created by Delvi-U on 09.04.2017.
  */
 export class ButtonBase {
-  public buttonName: string;
-  private action: any;
+  buttonName: string;
+  action: any;
+  actionArgument: string;
+  path: string;
+  srcNone: string;
+  srcHover: string;
+  srcDown: string;
+  cssClass: string;
+  cssId: string;
 
-  private srcNone: string;
-  private srcHover: string;
-  private srcDown: string;
-  private cssClass: string;
-  private cssId: string;
-
-  constructor(buttonName: string, action: void, cssClass: string = null, cssId: string = null) {
+  constructor(buttonName: string,
+              action: any,
+              actionArgument: string,
+              path: string = null,
+              cssClass: string = null,
+              cssId: string = null) {
     this.buttonName = buttonName;
-    this.srcNone = './assets/img/btn_' + buttonName + '_0.png';
-    this.srcHover = './assets/img/btn_' + buttonName + '_1.png';
-    this.srcDown = './assets/img/btn_' + buttonName + '_2.png';
-    this.cssClass = (cssClass.length === 0) ? 'btn_' + buttonName + '-img' : cssClass;
-    this.cssId = (cssId.length === 0) ? 'btn_' + buttonName + '-img' : cssId;
+    this.path = (path) ? path : '../../../';
+    this.srcNone = this.path + 'assets/img/btn_' + buttonName + '_0.png';
+    this.srcHover = this.path + 'assets/img/btn_' + buttonName + '_1.png';
+    this.srcDown = this.path + 'assets/img/btn_' + buttonName + '_2.png';
+    this.cssClass = (cssClass) ? cssClass : 'btn_' + buttonName + '-img';
+    this.cssId = (cssId) ? cssId : 'btn_' + buttonName + '-img';
     this.action = action;
-  }
-
-  drawButton(): string {
-    return `
-      <img src="../../../assets/img/btn_position_0.png"
-         class="btn_position-img"
-         (mouseover)="onOver($event)"
-         (mousedown)="onDown($event)"
-         (mouseup)="onUp($event, player)"
-         (mouseleave)="onOut($event)">
-      }`;
+    this.actionArgument = actionArgument;
   }
 
   onOver(event): void {
-    event.target.setAttribute('src', '../../../assets/img/btn_position_1.png');
+    event.target.setAttribute('src', this.srcHover);
   }
 
   onDown(event): void {
-    event.target.setAttribute('src', '../../../assets/img/btn_position_2.png');
+    event.target.setAttribute('src', this.srcDown);
   }
 
-  onUp(event): void {
-    event.target.setAttribute('src', '../../../assets/img/btn_position_0.png');
-    this.action(event);
+  onUp(event, argument): void {
+    event.target.setAttribute('src', this.srcNone);
+    this.action(event, argument);
   }
 
   onOut(event): void {
-    event.target.setAttribute('src', '../../../assets/img/btn_position_0.png');
+    event.target.setAttribute('src', this.srcNone);
+  }
+
+  drawButton(): string {
+    console.error('Densta: $', 'Method: ', this.cssClass);
+    console.error('Densta: $', 'Method: ', this.cssId);
+    return `
+      <img src="` + this.srcNone + `"
+         class="` + this.cssClass + `"
+         id="` + this.cssId + `"
+         (mouseover)="` + this.buttonName + `.onOver($event)"
+         (mousedown)="` + this.buttonName + `.onDown($event)"
+         (mouseup)="` + this.buttonName + `.onUp($event, ` + this.actionArgument + `)"
+         (mouseleave)="` + this.buttonName + `onOut($event)">`;
   }
 }
 
