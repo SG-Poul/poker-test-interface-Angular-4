@@ -7,16 +7,16 @@ import {ButtonBase} from '../../tools/buttonBase';
 
 // TEMP CONST FOR DEBUG
 const PLAYERS: Player[] = [
-  {position: 0, empty: true},
-  {position: 1, empty: true},
-  {position: 2, empty: true},
-  {position: 3, empty: true},
-  {position: 4, empty: true},
-  {position: 5, empty: true},
-  {position: 6, empty: true},
-  {position: 7, empty: true},
-  {position: 8, empty: true},
-  {position: 9, empty: true},
+  {position: 0, empty: true, isAppointee: false},
+  {position: 1, empty: true, isAppointee: false},
+  {position: 2, empty: true, isAppointee: false},
+  {position: 3, empty: true, isAppointee: false},
+  {position: 4, empty: true, isAppointee: false},
+  {position: 5, empty: true, isAppointee: false},
+  {position: 6, empty: true, isAppointee: false},
+  {position: 7, empty: true, isAppointee: false},
+  {position: 8, empty: true, isAppointee: false},
+  {position: 9, empty: true, isAppointee: false},
 ];
 
 @Component({
@@ -37,36 +37,48 @@ export class PlayersComponent {
   players = PLAYERS;
   currentPlayer: Player;
 
-  b_Position = new ButtonBase('position', this.selectPlayer.bind(this), 'player');
+  b_Position = new ButtonBase('position', this.selectPlayerPosition.bind(this), 'player');
   b_Ok = new ButtonBase('ok', this.panelSave.bind(this), 'player');
   b_Deny = new ButtonBase('deny', this.panelClose.bind(this), 'player');
   b_Delete = new ButtonBase('delete', this.panelDelete.bind(this), 'player');
 
-  selectPlayer(player: Player): void {
+  selectPlayerPosition(player: Player): void {
     this.currentPlayer = player;
     if (this.needToSetAppointee()) {
       this.displayAppointeePanel = true;
     } else {
       this.displayPlayersPanel = true;
     }
-    console.log('Densta: $', 'Method: selectPlayer', this.needToSetAppointee());
-    player.empty = false;
   }
 
   panelSave(player): void {
     console.log('Densta: $', 'Method: save');
+    if (this.displayAppointeePanel) {
+      this.currentPlayer.empty = false;
+      this.currentPlayer.name = 'YOU';
+      this.currentPlayer.balance = this.playerPanelData.balance;
+      this.currentPlayer.isAppointee = true;
+    } else {
+      this.currentPlayer.empty = false;
+      this.currentPlayer.empty = false;
+      this.currentPlayer.name = this.playerPanelData.name;
+      this.currentPlayer.balance = this.playerPanelData.balance;
+    }
+    this.panelHide();
   }
   panelClose(player): void {
-    this.displayPlayersPanel = false;
-    this.displayAppointeePanel = false;
-
-    this.playerPanelData.name = null;
-    this.playerPanelData.balance = null;
+    this.panelHide();
   }
   panelDelete(player): void {
     console.log('Densta: $', 'Method: delete');
     this.displayPlayersPanel = false;
     this.displayAppointeePanel = false;
+  }
+  panelHide(): void {
+    this.displayPlayersPanel = false;
+    this.displayAppointeePanel = false;
+    this.playerPanelData.name = null;
+    this.playerPanelData.balance = null;
   }
 
   /** check if there are no players to define appointee position */

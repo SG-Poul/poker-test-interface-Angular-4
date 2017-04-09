@@ -4,6 +4,7 @@
 export class Player {
   position: number;
   empty: boolean;
+  isAppointee: boolean;
   name?: string;
   balance?: number;
 }

@@ -1,12 +1,15 @@
 <div id="base">
   <div *ngFor="let player of players" class="players" id="p{{player.position}}">
     <div *ngIf="displayPositions && player.empty">
-        <img [src]="b_Position.srcNone" [class]="b_Position.cssClass"
-             (mouseover)="b_Position.onOver($event)"
-             (mousedown)="b_Position.onDown($event)"
-             (mouseleave)="b_Position.onOut($event)"
-             (mouseup)="b_Position.onUp($event, player)">
-      </div>
+      <img [src]="b_Position.srcNone" [class]="b_Position.cssClass"
+        (mouseover)="b_Position.onOver($event)"
+        (mousedown)="b_Position.onDown($event)"
+        (mouseleave)="b_Position.onOut($event)"
+        (mouseup)="b_Position.onUp($event, player)">
+    </div>
+    <div *ngIf="!player.empty">
+      {{player.name}} <br/> {{player.balance}}
+    </div>
   </div>
 
   <div *ngIf="displayAppointeePanel" id="appointeePanel">
