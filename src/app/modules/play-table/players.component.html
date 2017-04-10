@@ -8,18 +8,14 @@
         (mouseup)="b_Position.onUp($event, player)">
     </div>
     <div *ngIf="!player.empty && player.isAppointee">
-      <div>
         <img [src]="b_Name_appointee.srcNone" [class]="b_Name_appointee.cssClass"
              (mouseover)="b_Name_appointee.onOver($event)"
              (mousedown)="b_Name_appointee.onDown($event)"
              (mouseleave)="b_Name_appointee.onOut($event)"
-             (mouseup)="b_Name_appointee.onUp($event, player)" #spy>
+             (mouseup)="b_Name_appointee.onUp($event, player)">
         <p class="text-over-btn">{{player.name}}</p>
-      </div>
-      <div>
         <img src="../../../assets/img/panel_balance_appointee.png" class="panel-balance-img">
         <p class="text-balance">{{player.balance}}</p>
-      </div>
     </div>
     <div *ngIf="!player.empty && !player.isAppointee">
       <div>
@@ -71,7 +67,6 @@
          (mouseleave)="b_Delete.onOut($event)"
          (mouseup)="b_Delete.onUp($event, player)">
   </div>
-
   <div *ngIf="displayPlayersPanel" id="playerPanel">
     <img src="../../../assets/img/panel.png" id="playerPanel-img">
 

@@ -2,8 +2,10 @@
   position: relative;
   display: inline-block;
   width: 100%;
+  max-width: 1375px;
+  max-height: 907px;
   height: 0;
-  border: 1px solid black;
+  border: 5px solid black;
   z-index: 1;
   padding-bottom: 66%;
 }
@@ -14,7 +16,6 @@
   border: 3px solid darkred;
   z-index: 1;
 }
-
 #playerPanel, #appointeePanel {
   position: relative;
   margin-top: 10%;
@@ -25,7 +26,8 @@
   border: 2px double purple;
   z-index: 2;
   padding-bottom: 40%;
-
+  max-width: 567px;
+  max-height: 453px;
 }
 #playerPanel-img, #appointeePanel-img {
   position: absolute;
@@ -33,13 +35,75 @@
   height: auto;
   z-index: 2;
 }
-
 .panel-form-div {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 3;
   border: 2px solid white;
+}
+
+/* BUTTONS AND PANELS */
+
+.btn_ok-img {
+  position: absolute;
+  bottom: 5%;
+  right: 10%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_deny-img {
+  position: absolute;
+  bottom: 5%;
+  right: 37%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_delete-img {
+  position: absolute;
+  bottom: 5%;
+  right: 64%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_position-img{
+  width: 44%;
+  height: 38%;
+  position: absolute;
+}
+.btn_name_appointee-img, .btn_name_player-img{
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  z-index: 3;
+}
+.text-over-btn{
+  position: absolute;
+  display: block;
+  font-size: 1.3vw;
+  z-index: 4;
+  font-weight: bold;
+  color: white;
+}
+.panel-balance-img{
+  top:18%;
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  z-index: 3;
+}
+.text-balance{
+  position: absolute;
+  display: block;
+  left: 13%;
+  top: 24%;
+  font-size: 1.3vw;
+  z-index: 4;
+  font-weight: bold;
+  color: white;
 }
 
 /* PLAYERS POSITIONS */
@@ -89,90 +153,108 @@
   height: 19%;
 }
 
-/* BUTTONS */
 
-.btn_ok-img {
-  position: absolute;
-  bottom: 5%;
-  right: 10%;
-  width: 25%;
-  height: 28%;
-  z-index: 3;
-}
-.btn_deny-img {
-  position: absolute;
-  bottom: 5%;
-  right: 37%;
-  width: 25%;
-  height: 28%;
-  z-index: 3;
-}
-.btn_delete-img {
-  position: absolute;
-  bottom: 5%;
-  right: 64%;
-  width: 25%;
-  height: 28%;
-  z-index: 3;
-}
-.btn_position-img{
-  width: 44%;
-  height: 38%;
-  position: absolute;
-}
-.btn_name_appointee-img, .btn_name_player-img{
-  width: 100%;
-  height: 20%;
-  position: absolute;
-  z-index: 3;
-}
-.text-over-btn{
-  position: absolute;
-  display: block;
-  left: 13%;
-  top: 6%;
-  font-size: 1.3vw;
-  z-index: 4;
-  font-weight: bold;
-  color: white;
-}
-.panel-balance-img{
-  top:18%;
-  width: 100%;
-  height: 20%;
-  position: absolute;
-  z-index: 3;
-}
-.text-balance{
-  position: absolute;
-  display: block;
-  left: 13%;
-  top: 24%;
-  font-size: 1.3vw;
-  z-index: 4;
-  font-weight: bold;
-  color: white;
-}
-
-#p0 .btn_position-img, #p1 .btn_position-img, #p2 .btn_position-img, #p3 .btn_position-img {
+#p0 .btn_position-img, #p1 .btn_position-img, #p2 .btn_position-img,#p3 .btn_position-img {
   bottom: 26%;
   left: 29%;
 }
-#p5 .btn_position-img, #p6 .btn_position-img, #p7 .btn_position-img, #p8 .btn_position-img {
-  top: 0;
-  left: 29%;
+#p0 .btn_name_appointee-img, #p0 .btn_name_player-img, #p1 .btn_name_appointee-img, #p1 .btn_name_player-img,
+#p2 .btn_name_appointee-img, #p2 .btn_name_player-img, #p3 .btn_name_appointee-img, #p3 .btn_name_player-img{
+  top: 15%;
 }
+#p0 .text-over-btn, #p1 .text-over-btn, #p2 .text-over-btn, #p3 .text-over-btn{
+  left: 13%;
+  top: 21%;
+}
+#p0 .panel-balance-img, #p1 .panel-balance-img, #p2 .panel-balance-img, #p3 .panel-balance-img{
+  top: 33%;
+}
+#p0 .text-balance, #p1 .text-balance, #p2 .text-balance, #p3 .text-balance{
+  top: 39%;
+}
+
+
 #p4 .btn_position-img {
   top: 0;
   left: 10%;
   width: 28%;
   height: 70%;
 }
+#p4 .btn_name_appointee-img, #p4 .btn_name_player-img{
+  width: 65%;
+  height: 40%;
+  top: 0;
+  right: 0;
+}
+#p4 .text-over-btn{
+  width: 28%;
+  height: 70%;
+  left: 42%;
+  top: 12%;
+}
+#p4 .panel-balance-img{
+  width: 65%;
+  height: 40%;
+  top: 35%;
+  right: 0;
+}
+#p4 .text-balance{
+  width: 28%;
+  height: 70%;
+  left: 44%;
+  top: 48%;
+}
+
+
+#p5 .btn_position-img, #p6 .btn_position-img, #p7 .btn_position-img, #p8 .btn_position-img {
+  top: 0;
+  left: 29%;
+}
+#p5 .btn_name_appointee-img, #p5 .btn_name_player-img, #p6 .btn_name_appointee-img, #p6 .btn_name_player-img,
+#p7 .btn_name_appointee-img, #p7 .btn_name_player-img, #p8 .btn_name_appointee-img, #p8 .btn_name_player-img{
+  top: 44%;
+}
+#p5 .text-over-btn, #p6 .text-over-btn, #p7 .text-over-btn, #p8 .text-over-btn{
+  left: 13%;
+  top: 50%;
+}
+#p5 .panel-balance-img, #p6 .panel-balance-img, #p7 .panel-balance-img, #p8 .panel-balance-img{
+  top: 62%;
+}
+#p5 .text-balance, #p6 .text-balance, #p7 .text-balance, #p8 .text-balance{
+  top: 68%;
+}
+
+
 #p9 .btn_position-img {
   top: 0;
   right: 10%;
   width: 28%;
   height: 70%;
+}
+#p9 .btn_name_appointee-img, #p9 .btn_name_player-img{
+  width: 65%;
+  height: 40%;
+  top: 0;
+  left: 0;
+}
+#p9 .text-over-btn{
+  width: 28%;
+  height: 70%;
+  left: 8%;
+  top: 12%;
+}
+#p9 .panel-balance-img{
+  width: 65%;
+  height: 40%;
+  top: 35%;
+  left: 0;
+}
+#p9 .text-balance{
+  width: 28%;
+  height: 70%;
+  left: 10%;
+  top: 48%;
 }
 
 /* FORMS */
