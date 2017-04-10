@@ -38,6 +38,13 @@
            (mouseleave)="b_Dealer_init.onOut($event)"
            (mouseup)="b_Dealer_init.onUp($event, player)">
     </div>
+    <div *ngIf="player.isDealer">
+      <img [src]="b_Dealer_game.srcNone" [class]="b_Dealer_game.cssClass"
+           (mouseover)="b_Dealer_game.onOver($event)"
+           (mousedown)="b_Dealer_game.onDown($event)"
+           (mouseleave)="b_Dealer_game.onOut($event)"
+           (mouseup)="b_Dealer_game.onUp($event, player)">
+    </div>
   </div>
 
   <div *ngIf="displayAppointeePanel" id="appointeePanel">

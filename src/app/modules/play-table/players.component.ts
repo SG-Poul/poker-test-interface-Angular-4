@@ -42,6 +42,7 @@ export class PlayersComponent {
   b_Name_appointee = new ButtonBase('name_appointee', this.selectPlayerName.bind(this), 'player');
   b_Name_player = new ButtonBase('name_player', this.selectPlayerName.bind(this), 'player');
   b_Dealer_init = new ButtonBase('dealer', this.selectPlayerDealer.bind(this), 'player');
+  b_Dealer_game = new ButtonBase('gamedealer', this.changePlayerDealer.bind(this), 'player');
 
   b_Ok = new ButtonBase('ok', this.panelSave.bind(this), 'player');
   b_Deny = new ButtonBase('deny', this.panelClose.bind(this), 'player');
@@ -70,10 +71,15 @@ export class PlayersComponent {
 
   selectPlayerDealer(player: Player): void {
     player.isDealer = true;
-    console.log('Densta: $', 'Method: DEALER');
+    this.displaySelectDealer = false;
   }
 
-  panelSave(player): void {
+  changePlayerDealer(player: Player): void {
+    player.isDealer = false;
+    this.displaySelectDealer = true;
+  }
+
+  panelSave(): void {
     console.log('Densta: $', 'Method: save');
     if (this.displayAppointeePanel) {
       this.currentPlayer.empty = false;
@@ -88,13 +94,16 @@ export class PlayersComponent {
     }
     this.panelHide();
   }
-  panelClose(player): void {
+  panelClose(): void {
     this.panelHide();
   }
-  panelDelete(player): void {
-    console.log('Densta: $', 'Method: delete');
-    this.displayPlayersPanel = false;
-    this.displayAppointeePanel = false;
+  panelDelete(): void {
+   this.currentPlayer.empty = true;
+   this.currentPlayer.isAppointee = false;
+   this.currentPlayer.isDealer = false;
+   this.currentPlayer.name = null;
+   this.currentPlayer.balance = null;
+    this.panelHide();
   }
   panelHide(): void {
     this.displayPlayersPanel = false;
