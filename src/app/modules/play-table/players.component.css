@@ -7,12 +7,12 @@
   height: 0;
   border: 5px solid black;
   z-index: 1;
-  padding-bottom: 66%;
+  padding-bottom: 64%;
 }
 .players{
   position: absolute;
-  width: 13%;
-  height: 35%;
+  width: 15%;
+  height: 40%;
   border: 3px solid darkred;
   z-index: 1;
 }
@@ -70,8 +70,8 @@
   z-index: 3;
 }
 .btn_position-img{
-  width: 44%;
-  height: 38%;
+  width: 38%;
+  height: 32%;
   position: absolute;
 }
 .btn_name_appointee-img, .btn_name_player-img{
@@ -127,8 +127,8 @@
 #p4 {
   top: 40%;
   right: 0;
-  width: 20%;
-  height: 19%;
+  width: 25%;
+  height: 20%;
 }
 #p5 {
   bottom: 0;
@@ -149,8 +149,8 @@
 #p9 {
   top: 40%;
   left: 0;
-  width: 20%;
-  height: 19%;
+  width: 25%;
+  height: 20%;
 }
 
 
@@ -160,48 +160,48 @@
 }
 #p0 .btn_name_appointee-img, #p0 .btn_name_player-img, #p1 .btn_name_appointee-img, #p1 .btn_name_player-img,
 #p2 .btn_name_appointee-img, #p2 .btn_name_player-img, #p3 .btn_name_appointee-img, #p3 .btn_name_player-img{
-  top: 15%;
+  top: 10%;
 }
 #p0 .text-over-btn, #p1 .text-over-btn, #p2 .text-over-btn, #p3 .text-over-btn{
   left: 13%;
-  top: 21%;
+  top: 16%;
 }
 #p0 .panel-balance-img, #p1 .panel-balance-img, #p2 .panel-balance-img, #p3 .panel-balance-img{
-  top: 33%;
+  top: 28%;
 }
 #p0 .text-balance, #p1 .text-balance, #p2 .text-balance, #p3 .text-balance{
-  top: 39%;
+  top: 34%;
 }
 
 
 #p4 .btn_position-img {
   top: 0;
-  left: 10%;
-  width: 28%;
-  height: 70%;
+  left: 20%;
+  width: 23%;
+  height: 68%;
 }
 #p4 .btn_name_appointee-img, #p4 .btn_name_player-img{
-  width: 65%;
+  width: 53%;
   height: 40%;
   top: 0;
   right: 0;
 }
 #p4 .text-over-btn{
-  width: 28%;
+  width: 16%;
   height: 70%;
-  left: 42%;
+  left: 54%;
   top: 12%;
 }
 #p4 .panel-balance-img{
-  width: 65%;
+  width: 53%;
   height: 40%;
   top: 35%;
   right: 0;
 }
 #p4 .text-balance{
-  width: 28%;
+  width: 16%;
   height: 70%;
-  left: 44%;
+  left: 56%;
   top: 48%;
 }
 
@@ -212,46 +212,46 @@
 }
 #p5 .btn_name_appointee-img, #p5 .btn_name_player-img, #p6 .btn_name_appointee-img, #p6 .btn_name_player-img,
 #p7 .btn_name_appointee-img, #p7 .btn_name_player-img, #p8 .btn_name_appointee-img, #p8 .btn_name_player-img{
-  top: 44%;
+  top: 54%;
 }
 #p5 .text-over-btn, #p6 .text-over-btn, #p7 .text-over-btn, #p8 .text-over-btn{
   left: 13%;
-  top: 50%;
+  top: 60%;
 }
 #p5 .panel-balance-img, #p6 .panel-balance-img, #p7 .panel-balance-img, #p8 .panel-balance-img{
-  top: 62%;
+  top: 72%;
 }
 #p5 .text-balance, #p6 .text-balance, #p7 .text-balance, #p8 .text-balance{
-  top: 68%;
+  top: 78%;
 }
 
 
 #p9 .btn_position-img {
   top: 0;
-  right: 10%;
-  width: 28%;
-  height: 70%;
+  right: 20%;
+  width: 23%;
+  height: 68%;
 }
 #p9 .btn_name_appointee-img, #p9 .btn_name_player-img{
-  width: 65%;
+  width: 53%;
   height: 40%;
   top: 0;
   left: 0;
 }
 #p9 .text-over-btn{
-  width: 28%;
+  width: 16%;
   height: 70%;
   left: 8%;
   top: 12%;
 }
 #p9 .panel-balance-img{
-  width: 65%;
+  width: 53%;
   height: 40%;
   top: 35%;
   left: 0;
 }
 #p9 .text-balance{
-  width: 28%;
+  width: 16%;
   height: 70%;
   left: 10%;
   top: 48%;
