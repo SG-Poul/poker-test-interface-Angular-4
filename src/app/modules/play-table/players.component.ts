@@ -7,16 +7,16 @@ import {ButtonBase} from '../../tools/buttonBase';
 
 // TEMP CONST FOR DEBUG
 const PLAYERS: Player[] = [
-  {position: 0, empty: true, isAppointee: false},
-  {position: 1, empty: true, isAppointee: false},
-  {position: 2, empty: true, isAppointee: false},
-  {position: 3, empty: true, isAppointee: false},
-  {position: 4, empty: true, isAppointee: false},
-  {position: 5, empty: true, isAppointee: false},
-  {position: 6, empty: true, isAppointee: false},
-  {position: 7, empty: true, isAppointee: false},
-  {position: 8, empty: true, isAppointee: false},
-  {position: 9, empty: true, isAppointee: false},
+  {position: 0, empty: true, isAppointee: false, isDealer: false},
+  {position: 1, empty: true, isAppointee: false, isDealer: false},
+  {position: 2, empty: true, isAppointee: false, isDealer: false},
+  {position: 3, empty: true, isAppointee: false, isDealer: false},
+  {position: 4, empty: true, isAppointee: false, isDealer: false},
+  {position: 5, empty: true, isAppointee: false, isDealer: false},
+  {position: 6, empty: true, isAppointee: false, isDealer: false},
+  {position: 7, empty: true, isAppointee: false, isDealer: false},
+  {position: 8, empty: true, isAppointee: false, isDealer: false},
+  {position: 9, empty: true, isAppointee: false, isDealer: false},
 ];
 
 @Component({
@@ -29,6 +29,7 @@ export class PlayersComponent {
   displayPositions = true;
   displayAppointeePanel = false;
   displayPlayersPanel = false;
+  displaySelectDealer = true;
   playerPanelData = {
     name : null,
     balance : null,
@@ -40,6 +41,7 @@ export class PlayersComponent {
   b_Position = new ButtonBase('position', this.selectPlayerPosition.bind(this), 'player');
   b_Name_appointee = new ButtonBase('name_appointee', this.selectPlayerName.bind(this), 'player');
   b_Name_player = new ButtonBase('name_player', this.selectPlayerName.bind(this), 'player');
+  b_Dealer_init = new ButtonBase('dealer', this.selectPlayerDealer.bind(this), 'player');
 
   b_Ok = new ButtonBase('ok', this.panelSave.bind(this), 'player');
   b_Deny = new ButtonBase('deny', this.panelClose.bind(this), 'player');
@@ -64,6 +66,11 @@ export class PlayersComponent {
       this.playerPanelData.balance = player.balance;
       this.displayPlayersPanel = true;
     }
+  }
+
+  selectPlayerDealer(player: Player): void {
+    player.isDealer = true;
+    console.log('Densta: $', 'Method: DEALER');
   }
 
   panelSave(player): void {

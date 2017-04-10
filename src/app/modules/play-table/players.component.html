@@ -23,13 +23,20 @@
              (mouseover)="b_Name_player.onOver($event)"
              (mousedown)="b_Name_player.onDown($event)"
              (mouseleave)="b_Name_player.onOut($event)"
-             (mouseup)="b_Name_player.onUp($event, player)" #spy>
+             (mouseup)="b_Name_player.onUp($event, player)">
         <p class="text-over-btn">{{player.name}}</p>
       </div>
       <div>
         <img src="../../../assets/img/panel_balance_player.png" class="panel-balance-img">
         <p class="text-balance">{{player.balance}}</p>
       </div>
+    </div>
+    <div *ngIf="!player.empty && displaySelectDealer">
+      <img [src]="b_Dealer_init.srcNone" [class]="b_Dealer_init.cssClass"
+           (mouseover)="b_Dealer_init.onOver($event)"
+           (mousedown)="b_Dealer_init.onDown($event)"
+           (mouseleave)="b_Dealer_init.onOut($event)"
+           (mouseup)="b_Dealer_init.onUp($event, player)">
     </div>
   </div>
 

@@ -105,7 +105,12 @@
   font-weight: bold;
   color: white;
 }
-
+.btn_dealer-img{
+  width: 22%;
+  height: 10%;
+  position: absolute;
+  z-index: 3;
+}
 /* PLAYERS POSITIONS */
 
 #p0 {
@@ -172,6 +177,10 @@
 #p0 .text-balance, #p1 .text-balance, #p2 .text-balance, #p3 .text-balance{
   top: 34%;
 }
+#p0 .btn_dealer-img, #p1 .btn_dealer-img, #p2 .btn_dealer-img,#p3 .btn_dealer-img {
+  bottom: 25%;
+  left: 0;
+}
 
 
 #p4 .btn_position-img {
@@ -204,6 +213,12 @@
   left: 56%;
   top: 48%;
 }
+#p4 .btn_dealer-img{
+  width: 13%;
+  height: 23%;
+  left: 32%;
+  top: 0;
+}
 
 
 #p5 .btn_position-img, #p6 .btn_position-img, #p7 .btn_position-img, #p8 .btn_position-img {
@@ -223,6 +238,10 @@
 }
 #p5 .text-balance, #p6 .text-balance, #p7 .text-balance, #p8 .text-balance{
   top: 78%;
+}
+#p5 .btn_dealer-img, #p6 .btn_dealer-img, #p7 .btn_dealer-img,#p8 .btn_dealer-img {
+  top: 25%;
+  right: 0;
 }
 
 
@@ -255,6 +274,12 @@
   height: 70%;
   left: 10%;
   top: 48%;
+}
+#p9 .btn_dealer-img{
+  width: 13%;
+  height: 23%;
+  right: 38%;
+  bottom: 0;
 }
 
 /* FORMS */

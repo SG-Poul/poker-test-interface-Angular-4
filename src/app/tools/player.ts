@@ -5,6 +5,7 @@ export class Player {
   position: number;
   empty: boolean;
   isAppointee: boolean;
+  isDealer?: boolean;
   name?: string;
   balance?: number;
 }
