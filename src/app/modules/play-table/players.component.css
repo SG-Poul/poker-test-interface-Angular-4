@@ -5,7 +5,7 @@
   max-width: 1375px;
   max-height: 907px;
   height: 0;
-  border: 5px solid black;
+  /*border: 5px solid black;*/
   z-index: 1;
   padding-bottom: 64%;
 }
@@ -13,7 +13,7 @@
   position: absolute;
   width: 15%;
   height: 40%;
-  border: 3px solid darkred;
+  border: 1px dotted mediumpurple;
   z-index: 1;
 }
 #playerPanel, #appointeePanel {
@@ -23,7 +23,7 @@
   left: 24%;
   width: 50%;
   height: 0;
-  border: 2px double purple;
+  /*border: 2px double purple;*/
   z-index: 2;
   padding-bottom: 40%;
   max-width: 567px;
@@ -40,7 +40,7 @@
   width: 100%;
   height: 100%;
   z-index: 3;
-  border: 2px solid white;
+  /*border: 2px solid white;*/
 }
 
 /* BUTTONS AND PANELS */
