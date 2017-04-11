@@ -22,7 +22,7 @@ const PLAYERS: Player[] = [
 @Component({
   selector: 'app-players',
   templateUrl: './players.component.html',
-  styleUrls: ['./players.component.css']
+  styleUrls: ['./css/players.component.css', './css/buttons.css', './css/players-positions.css']
 })
 export class PlayersComponent {
   title = 'This is play table!';

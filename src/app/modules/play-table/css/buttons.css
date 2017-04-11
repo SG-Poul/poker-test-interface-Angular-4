@@ -1,0 +1,68 @@
+/* BUTTONS AND PANELS */
+
+.btn_ok-img {
+  position: absolute;
+  bottom: 5%;
+  right: 10%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_deny-img {
+  position: absolute;
+  bottom: 5%;
+  right: 37%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_delete-img {
+  position: absolute;
+  bottom: 5%;
+  right: 64%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_position-img{
+  width: 38%;
+  height: 32%;
+  position: absolute;
+}
+.btn_name_appointee-img, .btn_name_player-img{
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  z-index: 3;
+}
+.text-over-btn{
+  position: absolute;
+  display: block;
+  font-size: 1.3vw;
+  z-index: 4;
+  font-weight: bold;
+  color: white;
+}
+.panel-balance-img{
+  top:18%;
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  z-index: 3;
+}
+.text-balance{
+  position: absolute;
+  display: block;
+  left: 13%;
+  top: 24%;
+  font-size: 1.3vw;
+  z-index: 4;
+  font-weight: bold;
+  color: white;
+}
+.btn_dealer-img, .btn_gamedealer-img{
+  width: 22%;
+  height: 10%;
+  position: absolute;
+  z-index: 3;
+}
