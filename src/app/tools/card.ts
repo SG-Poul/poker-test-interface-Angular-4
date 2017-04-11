@@ -1,7 +1,9 @@
+import {AfterViewInit} from "@angular/core";
 /**
  * Created by Delvi-U on 11.04.2017.
  */
-export class Card {
+
+export class Card implements AfterViewInit{
   name: string;
   path: string;
   srcImg: string;
@@ -28,10 +30,13 @@ export class Card {
     this.isButton = false;
     this.ownerPosition = ownerPosition;
     this.index = index;
-
     this.cssClass = 'card_base-img';
-    this.cssId = 'card' + this.ownerPosition + this.index;
-    this.domElement = document.querySelectorAll(this.cssId);
+    this.cssId = 'card-' + this.ownerPosition + '-' +this.index;
+  }
+
+  ngAfterViewInit() { // TODO: fix
+    this.domElement = document.getElementById(this.cssId);
+    this.setButton()
   }
 
   onOver(): void {
@@ -47,6 +52,7 @@ export class Card {
   }
 
   onUp(): void {
+    console.log('Densta: $', 'this.domElement: ', this.domElement);
     if (this.isButton) {
       this.domElement.setAttribute('src', this.srcBtnNone);
       // this.action(argument);
