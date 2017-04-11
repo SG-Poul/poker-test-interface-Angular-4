@@ -7,6 +7,7 @@
         (mouseleave)="b_Position.onOut($event)"
         (mouseup)="b_Position.onUp($event, player)">
     </div>
+
     <div *ngIf="!player.empty && player.isAppointee">
         <img [src]="b_Name_appointee.srcNone" [class]="b_Name_appointee.cssClass"
              (mouseover)="b_Name_appointee.onOver($event)"
@@ -31,6 +32,22 @@
         <p class="text-balance">{{player.balance}}</p>
       </div>
     </div>
+
+    <div class="card-0">
+      <img [src]="player.card_0.srcImg" [class]="player.card_0.cssClass"  [id]="player.card_0.cssId"
+           (mouseover)="player.card_0.onOver()"
+           (mousedown)="player.card_0.onDown()"
+           (mouseleave)="player.card_0.onOut()"
+           (mouseup)="player.card_0.onUp()">
+    </div>
+    <div class="card-1">
+      <img [src]="player.card_1.srcImg" [class]="player.card_1.cssClass"  [id]="player.card_1.cssId"
+           (mouseover)="player.card_1.onOver()"
+           (mousedown)="player.card_1.onDown()"
+           (mouseleave)="player.card_1.onOut()"
+           (mouseup)="player.card_1.onUp()">
+    </div>
+
     <div *ngIf="!player.empty && displaySelectDealer">
       <img [src]="b_Dealer_init.srcNone" [class]="b_Dealer_init.cssClass"
            (mouseover)="b_Dealer_init.onOver($event)"

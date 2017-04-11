@@ -7,16 +7,16 @@ import {ButtonBase} from '../../tools/buttonBase';
 
 // TEMP CONST FOR DEBUG
 const PLAYERS: Player[] = [
-  {position: 0, empty: true, isAppointee: false, isDealer: false},
-  {position: 1, empty: true, isAppointee: false, isDealer: false},
-  {position: 2, empty: true, isAppointee: false, isDealer: false},
-  {position: 3, empty: true, isAppointee: false, isDealer: false},
-  {position: 4, empty: true, isAppointee: false, isDealer: false},
-  {position: 5, empty: true, isAppointee: false, isDealer: false},
-  {position: 6, empty: true, isAppointee: false, isDealer: false},
-  {position: 7, empty: true, isAppointee: false, isDealer: false},
-  {position: 8, empty: true, isAppointee: false, isDealer: false},
-  {position: 9, empty: true, isAppointee: false, isDealer: false},
+  new Player(0),
+  new Player(1),
+  new Player(2),
+  new Player(3),
+  new Player(4),
+  new Player(5),
+  new Player(6),
+  new Player(7),
+  new Player(8),
+  new Player(9)
 ];
 
 @Component({

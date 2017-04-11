@@ -1,7 +1,6 @@
 /**
  * Created by Delvi-U on 11.04.2017.
  */
-import {Player} from "./player";
 export class Card {
   name: string;
   path: string;
@@ -9,8 +8,8 @@ export class Card {
   srcBtnNone: string;
   srcBtnHover: string;
   srcBtnDown: string;
-  action: any;
-  actionArgument: string;
+  // action: any;
+  // actionArgument: string;
   cssClass: string;
   cssId: string;
   isButton: boolean;
@@ -18,14 +17,14 @@ export class Card {
   index: number;
   domElement: any;
 
-  constructor(action: any, ownerPosition:number, index: number) {
+  constructor(ownerPosition:number, index: number) {
     this.name = 'back';
     this.path = '../../../assets/img/cards/card-';
     this.srcImg = this.path + this.name + '.png';
     this.srcBtnNone = this.path + 'btn_0.png';
     this.srcBtnHover = this.path + 'btn_1.png';
     this.srcBtnDown = this.path + 'btn_2.png';
-    this.action = action;
+    // this.action = action;
     this.isButton = false;
     this.ownerPosition = ownerPosition;
     this.index = index;
@@ -47,15 +46,15 @@ export class Card {
     }
   }
 
-  onUp(event, argument): void {
+  onUp(): void {
     if (this.isButton) {
       this.domElement.setAttribute('src', this.srcBtnNone);
-      this.action(argument);
+      // this.action(argument);
       this.isButton = false;
     }
   }
 
-  onOut(event): void {
+  onOut(): void {
     if (this.isButton) {
       this.domElement.setAttribute('src', this.srcBtnNone);
     }
