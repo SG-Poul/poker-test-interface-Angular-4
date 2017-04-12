@@ -1,7 +1,7 @@
 /**
  * Created by Delvi-U on 08.04.2017.
  */
-import {Component} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {Player} from '../../tools/player';
 import {ButtonBase} from '../../tools/buttonBase';
 
@@ -24,7 +24,7 @@ const PLAYERS: Player[] = [
   templateUrl: './players.component.html',
   styleUrls: ['./css/players.component.css', './css/buttons.css', './css/players-positions.css', './css/cards.css']
 })
-export class PlayersComponent {
+export class PlayersComponent implements AfterViewInit {
   title = 'This is play table!';
   displayPositions = true;
   displayAppointeePanel = false;
@@ -47,6 +47,13 @@ export class PlayersComponent {
   b_Ok = new ButtonBase('ok', this.panelSave.bind(this), 'player');
   b_Deny = new ButtonBase('deny', this.panelClose.bind(this), 'player');
   b_Delete = new ButtonBase('delete', this.panelDelete.bind(this), 'player');
+
+  ngAfterViewInit() {
+    this.players.forEach(function(item) {
+      item.card_0.getDOMElement();
+      item.card_1.getDOMElement();
+    });
+  }
 
   selectPlayerPosition(player: Player): void {
     this.currentPlayer = player;

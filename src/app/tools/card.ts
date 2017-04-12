@@ -1,9 +1,8 @@
-import {AfterViewInit} from "@angular/core";
 /**
  * Created by Delvi-U on 11.04.2017.
  */
 
-export class Card implements AfterViewInit{
+export class Card {
   name: string;
   path: string;
   srcImg: string;
@@ -19,7 +18,7 @@ export class Card implements AfterViewInit{
   index: number;
   domElement: any;
 
-  constructor(ownerPosition:number, index: number) {
+  constructor(ownerPosition: number, index: number) {
     this.name = 'back';
     this.path = '../../../assets/img/cards/card-';
     this.srcImg = this.path + this.name + '.png';
@@ -34,9 +33,9 @@ export class Card implements AfterViewInit{
     this.cssId = 'card-' + this.ownerPosition + '-' +this.index;
   }
 
-  ngAfterViewInit() { // TODO: fix
+  getDOMElement() { // TODO: fix
     this.domElement = document.getElementById(this.cssId);
-    this.setButton()
+    this.setButton();
   }
 
   onOver(): void {
