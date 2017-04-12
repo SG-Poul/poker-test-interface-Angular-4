@@ -4,6 +4,7 @@
 import {AfterViewInit, Component} from '@angular/core';
 import {Player} from '../../tools/player';
 import {ButtonBase} from '../../tools/buttonBase';
+import {Banker} from '../../tools/banker';
 
 // TEMP CONST FOR DEBUG
 const PLAYERS: Player[] = [
@@ -43,6 +44,7 @@ export class PlayersComponent implements AfterViewInit {
   b_Name_player = new ButtonBase('name_player', this.selectPlayerName.bind(this), 'player');
   b_Dealer_init = new ButtonBase('dealer', this.selectPlayerDealer.bind(this), 'player');
   b_Dealer_game = new ButtonBase('gamedealer', this.changePlayerDealer.bind(this), 'player');
+  banker = new Banker();
 
   b_Ok = new ButtonBase('ok', this.panelSave.bind(this), 'player');
   b_Deny = new ButtonBase('deny', this.panelClose.bind(this), 'player');

@@ -1,5 +1,16 @@
 /* PLAYERS POSITIONS */
 
+#banker{
+  position: absolute;
+  width: 50%;
+  height: 20%;
+  border: 1px dashed purple;
+  z-index: 1;
+  top: 40%;
+  left: 25%
+}
+
+
 #p0 {
   top: 0;
   left: 20%;

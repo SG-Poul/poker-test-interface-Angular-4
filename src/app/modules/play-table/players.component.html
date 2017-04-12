@@ -64,6 +64,49 @@
     </div>
   </div>
 
+  <div id="banker">
+    <div class="card-0">
+      <img [src]="banker.card_0.srcImg" [class]="banker.card_0.cssClass"  [id]="banker.card_0.cssId"
+           (mouseover)="banker.card_0.onOver()"
+           (mousedown)="banker.card_0.onDown()"
+           (mouseleave)="banker.card_0.onOut()"
+           (mouseup)="banker.card_0.onUp()">
+    </div>
+
+    <div class="card-1">
+      <img [src]="banker.card_1.srcImg" [class]="banker.card_1.cssClass"  [id]="banker.card_1.cssId"
+           (mouseover)="banker.card_1.onOver()"
+           (mousedown)="banker.card_1.onDown()"
+           (mouseleave)="banker.card_1.onOut()"
+           (mouseup)="banker.card_1.onUp()">
+    </div>
+
+    <div class="card-2">
+      <img [src]="banker.card_2.srcImg" [class]="banker.card_2.cssClass"  [id]="banker.card_2.cssId"
+           (mouseover)="banker.card_2.onOver()"
+           (mousedown)="banker.card_2.onDown()"
+           (mouseleave)="banker.card_2.onOut()"
+           (mouseup)="banker.card_2.onUp()">
+    </div>
+
+    <div class="card-3">
+      <img [src]="banker.card_3.srcImg" [class]="banker.card_3.cssClass"  [id]="banker.card_3.cssId"
+           (mouseover)="banker.card_3.onOver()"
+           (mousedown)="banker.card_3.onDown()"
+           (mouseleave)="banker.card_3.onOut()"
+           (mouseup)="banker.card_3.onUp()">
+    </div>
+
+    <div class="card-4">
+      <img [src]="banker.card_4.srcImg" [class]="banker.card_4.cssClass"  [id]="banker.card_4.cssId"
+           (mouseover)="banker.card_4.onOver()"
+           (mousedown)="banker.card_4.onDown()"
+           (mouseleave)="banker.card_4.onOut()"
+           (mouseup)="banker.card_4.onUp()">
+    </div>
+
+  </div>
+
   <div *ngIf="displayAppointeePanel" id="appointeePanel">
     <img src="../../../assets/img/panel.png" id="appointeePanel-img">
 
