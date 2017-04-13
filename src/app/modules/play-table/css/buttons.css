@@ -66,3 +66,36 @@
   position: absolute;
   z-index: 3;
 }
+
+.btn_suit-h-img {
+  position: absolute;
+  top: 20%;
+  left: 24%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_suit-s-img {
+  position: absolute;
+  top: 20%;
+  right: 24%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_suit-c-img {
+  position: absolute;
+  top: 50%;
+  left: 24%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}
+.btn_suit-d-img {
+  position: absolute;
+  top: 50%;
+  right: 24%;
+  width: 25%;
+  height: 28%;
+  z-index: 3;
+}

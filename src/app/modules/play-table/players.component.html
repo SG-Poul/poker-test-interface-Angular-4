@@ -176,7 +176,32 @@
 
   <div *ngIf="displayCardPanel" id="cardPanel">
     <img src="../../../assets/img/panel.png" id="cardPanel-img">
+    <div *ngIf="cardPanelChooseSuit" id="selectSuit">
+    <img [src]="b_suit_d.srcNone" [class]="b_suit_d.cssClass"
+         (mouseover)="b_suit_d.onOver($event)"
+         (mousedown)="b_suit_d.onDown($event)"
+         (mouseleave)="b_suit_d.onOut($event)"
+         (mouseup)="b_suit_d.onUp($event, 'diamond')">
+    <img [src]="b_suit_h.srcNone" [class]="b_suit_h.cssClass"
+         (mouseover)="b_suit_h.onOver($event)"
+         (mousedown)="b_suit_h.onDown($event)"
+         (mouseleave)="b_suit_h.onOut($event)"
+         (mouseup)="b_suit_h.onUp($event, 'heart')">
+    <img [src]="b_suit_s.srcNone" [class]="b_suit_s.cssClass"
+         (mouseover)="b_suit_s.onOver($event)"
+         (mousedown)="b_suit_s.onDown($event)"
+         (mouseleave)="b_suit_s.onOut($event)"
+         (mouseup)="b_suit_s.onUp($event, 'spades')">
+    <img [src]="b_suit_c.srcNone" [class]="b_suit_c.cssClass"
+         (mouseover)="b_suit_c.onOver($event)"
+         (mousedown)="b_suit_c.onDown($event)"
+         (mouseleave)="b_suit_c.onOut($event)"
+         (mouseup)="b_suit_c.onUp($event, 'clubs')">
+  </div>
 
+    <div *ngIf="cardPanelChooseCard" id="selectCard">
+
+    </div>
   </div>
 
 </div>

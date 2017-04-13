@@ -35,6 +35,9 @@ export class PlayersComponent implements AfterViewInit, OnInit {
   displayPlayersPanel = false;
   displaySelectDealer = false;
   displayCardPanel = false;
+  cardPanelChooseSuit = true;
+  cardPanelChooseCard = false;
+  cardPanelSuit: string;
   playerPanelData = {
     name : null,
     balance : null,
@@ -43,24 +46,26 @@ export class PlayersComponent implements AfterViewInit, OnInit {
   players = PLAYERS;
   currentPlayer: Player;
   currentCard: Card;
+  banker = new Banker();
 
   b_Position = new ButtonBase('position', this.selectPlayerPosition.bind(this), 'player');
   b_Name_appointee = new ButtonBase('name_appointee', this.selectPlayerName.bind(this), 'player');
   b_Name_player = new ButtonBase('name_player', this.selectPlayerName.bind(this), 'player');
   b_Dealer_init = new ButtonBase('dealer', this.selectPlayerDealer.bind(this), 'player');
   b_Dealer_game = new ButtonBase('gamedealer', this.changePlayerDealer.bind(this), 'player');
-  banker = new Banker();
-
   b_Ok = new ButtonBase('ok', this.panelSave.bind(this), 'player');
   b_Deny = new ButtonBase('deny', this.panelClose.bind(this), 'player');
   b_Delete = new ButtonBase('delete', this.panelDelete.bind(this), 'player');
+  b_suit_d = new ButtonBase('suit-d', this.cardSelectSuit.bind(this), 'player');
+  b_suit_h = new ButtonBase('suit-h', this.cardSelectSuit.bind(this), 'player');
+  b_suit_s = new ButtonBase('suit-s', this.cardSelectSuit.bind(this), 'player');
+  b_suit_c = new ButtonBase('suit-c', this.cardSelectSuit.bind(this), 'player');
 
   constructor(private mainService: MainService) { }
 
   ngOnInit(): void {
     console.log('Densta: $', 'Method: Inited');
   }
-
   ngAfterViewInit() {
     this.players.forEach(function(item) {
       item.card_0.getDOMElement();
@@ -81,7 +86,6 @@ export class PlayersComponent implements AfterViewInit, OnInit {
       this.displayPlayersPanel = true;
     }
   }
-
   selectPlayerName(player: Player): void {
     this.currentPlayer = player;
     if (this.currentPlayer.isAppointee) {
@@ -119,6 +123,30 @@ export class PlayersComponent implements AfterViewInit, OnInit {
           card.onUp();
           this.displayCardPanel = true;
         }
+        break;
+      default:
+        console.error('Densta: $', 'Method: selectCard - UNKNOWN STATE');
+        break;
+    }
+  }
+
+  cardSelectSuit(suit: string): void {
+    console.log('Densta: $', 'Method: cardSelectDiamond', suit);
+    this.cardPanelSuit = suit;
+    this.cardPanelChooseSuit = false;
+    this.cardPanelChooseCard = true;
+    switch (suit) {
+      case 'diamond':
+
+        break;
+      case 'heart':
+
+        break;
+      case 'spades':
+
+        break;
+      case 'clubs':
+
         break;
       default:
         console.error('Densta: $', 'Method: selectCard - UNKNOWN STATE');
