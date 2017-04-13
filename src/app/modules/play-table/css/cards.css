@@ -80,3 +80,63 @@
   height: 44.05%;
   right: 54%;
 }
+
+.card_panel-img {
+  position: absolute;
+  width: 12%;
+  height: 20%;
+  z-index: 5;
+}
+
+#cardPanel-0 {
+  top: 10%;
+  left: 5%;
+}
+#cardPanel-1 {
+  top: 10%;
+  left: 20%;
+}
+#cardPanel-2 {
+  top: 10%;
+  left: 35%;
+}
+#cardPanel-3 {
+  top: 10%;
+  left: 50%;
+}
+#cardPanel-4 {
+  top: 10%;
+  left: 65%;
+}
+#cardPanel-5 {
+  top: 10%;
+  left: 80%;
+}
+#cardPanel-6 {
+  top: 40%;
+  left: 5%;
+}
+#cardPanel-7 {
+  top: 40%;
+  left: 20%;
+}
+#cardPanel-8 {
+  top: 40%;
+  left: 35%;
+}
+#cardPanel-9 {
+  top: 40%;
+  left: 50%;
+}
+#cardPanel-10 {
+  top: 40%;
+  left: 65%;
+}
+#cardPanel-11 {
+  top: 40%;
+  left: 80%;
+}
+#cardPanel-12 {
+  top: 70%;
+  left: 5%;
+}

@@ -3,10 +3,12 @@
  */
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Player} from '../../tools/player';
-import {ButtonBase} from '../../tools/buttonBase';
 import {Banker} from '../../tools/banker';
+import {ButtonBase} from '../../tools/buttonBase';
 import {Card} from '../../tools/card';
+import {CardPanel} from '../../tools/cardPanel';
 import {MainService} from '../../main.service';
+
 
 // TEMP CONST FOR DEBUG
 const PLAYERS: Player[] = [
@@ -34,10 +36,15 @@ export class PlayersComponent implements AfterViewInit, OnInit {
   displayAppointeePanel = false;
   displayPlayersPanel = false;
   displaySelectDealer = false;
+
   displayCardPanel = false;
   cardPanelChooseSuit = true;
   cardPanelChooseCard = false;
+  cardPanelCards:  CardPanel[];
+
   cardPanelSuit: string;
+
+
   playerPanelData = {
     name : null,
     balance : null,
@@ -64,8 +71,9 @@ export class PlayersComponent implements AfterViewInit, OnInit {
   constructor(private mainService: MainService) { }
 
   ngOnInit(): void {
-    console.log('Densta: $', 'Method: Inited');
+    this.createPanelCards();
   }
+
   ngAfterViewInit() {
     this.players.forEach(function(item) {
       item.card_0.getDOMElement();
@@ -130,28 +138,25 @@ export class PlayersComponent implements AfterViewInit, OnInit {
     }
   }
 
+  createPanelCards(): void {
+    this.cardPanelCards = [];
+    for (let i = 0; i < 13; i++) {
+      this.cardPanelCards.push(new CardPanel(i));
+    }
+  }
+
   cardSelectSuit(suit: string): void {
     console.log('Densta: $', 'Method: cardSelectDiamond', suit);
     this.cardPanelSuit = suit;
+    this.cardPanelCards.forEach(function(item){
+      item.setSuit(suit);
+    });
     this.cardPanelChooseSuit = false;
     this.cardPanelChooseCard = true;
-    switch (suit) {
-      case 'diamond':
+  }
 
-        break;
-      case 'heart':
-
-        break;
-      case 'spades':
-
-        break;
-      case 'clubs':
-
-        break;
-      default:
-        console.error('Densta: $', 'Method: selectCard - UNKNOWN STATE');
-        break;
-    }
+  cardSelectId(id: string): void {
+    console.log('Densta: $', 'Method: cardSelectId', id);
   }
 
   panelSave(): void {
