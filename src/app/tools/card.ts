@@ -9,8 +9,6 @@ export class Card {
   srcBtnNone: string;
   srcBtnHover: string;
   srcBtnDown: string;
-  // action: any;
-  // actionArgument: string;
   cssClass: string;
   cssId: string;
   isButton: boolean;
@@ -30,12 +28,12 @@ export class Card {
     this.ownerPosition = ownerPosition;
     this.index = index;
     this.cssClass = 'card_base-img';
-    this.cssId = 'card-' + this.ownerPosition + '-' +this.index;
+    this.cssId = 'card-' + this.ownerPosition + '-' + this.index;
   }
 
-  getDOMElement() { // TODO: fix
+  getDOMElement() {
     this.domElement = document.getElementById(this.cssId);
-    this.setButton();
+    this.setButton(); // TODO: remove
   }
 
   onOver(): void {
@@ -51,10 +49,8 @@ export class Card {
   }
 
   onUp(): void {
-    console.log('Densta: $', 'this.domElement: ', this.domElement);
     if (this.isButton) {
       this.domElement.setAttribute('src', this.srcBtnNone);
-      // this.action(argument);
       this.isButton = false;
     }
   }
@@ -75,7 +71,6 @@ export class Card {
     this.srcImg = this.path + this.name + '.png';
     this.domElement.setAttribute('src', this.srcImg);
   }
-
 }
 
 

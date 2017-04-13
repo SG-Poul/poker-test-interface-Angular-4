@@ -10,4 +10,7 @@ import {Component} from '@angular/core';
 })
 export class PlayTableComponent {
   title = 'This is play table!';
+  state: number;
 }
+export const G_STATE_INIT = 0;
+export const G_STATE_SET_PLAYERS = 1;

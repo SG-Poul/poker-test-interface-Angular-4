@@ -35,17 +35,17 @@
 
     <div class="card-0">
       <img [src]="player.card_0.srcImg" [class]="player.card_0.cssClass"  [id]="player.card_0.cssId"
-           (mouseover)="player.card_0.onOver()"
-           (mousedown)="player.card_0.onDown()"
-           (mouseleave)="player.card_0.onOut()"
-           (mouseup)="player.card_0.onUp()">
+           (mouseover)="selectCard(player.card_0, 'over')"
+           (mousedown)="selectCard(player.card_0, 'down')"
+           (mouseleave)="selectCard(player.card_0, 'leave')"
+           (mouseup)="selectCard(player.card_0, 'up')">
     </div>
     <div class="card-1">
       <img [src]="player.card_1.srcImg" [class]="player.card_1.cssClass"  [id]="player.card_1.cssId"
-           (mouseover)="player.card_1.onOver()"
-           (mousedown)="player.card_1.onDown()"
-           (mouseleave)="player.card_1.onOut()"
-           (mouseup)="player.card_1.onUp()">
+           (mouseover)="selectCard(player.card_1, 'over')"
+           (mousedown)="selectCard(player.card_1, 'down')"
+           (mouseleave)="selectCard(player.card_1, 'leave')"
+           (mouseup)="selectCard(player.card_1, 'up')">
     </div>
 
     <div *ngIf="!player.empty && displaySelectDealer">
@@ -67,44 +67,39 @@
   <div id="banker">
     <div class="card-0">
       <img [src]="banker.card_0.srcImg" [class]="banker.card_0.cssClass"  [id]="banker.card_0.cssId"
-           (mouseover)="banker.card_0.onOver()"
-           (mousedown)="banker.card_0.onDown()"
-           (mouseleave)="banker.card_0.onOut()"
-           (mouseup)="banker.card_0.onUp()">
+           (mouseover)="selectCard(banker.card_0, 'over')"
+           (mousedown)="selectCard(banker.card_0, 'down')"
+           (mouseleave)="selectCard(banker.card_0, 'leave')"
+           (mouseup)="selectCard(banker.card_0, 'up')">
     </div>
-
     <div class="card-1">
       <img [src]="banker.card_1.srcImg" [class]="banker.card_1.cssClass"  [id]="banker.card_1.cssId"
-           (mouseover)="banker.card_1.onOver()"
-           (mousedown)="banker.card_1.onDown()"
-           (mouseleave)="banker.card_1.onOut()"
-           (mouseup)="banker.card_1.onUp()">
+           (mouseover)="selectCard(banker.card_1, 'over')"
+           (mousedown)="selectCard(banker.card_1, 'down')"
+           (mouseleave)="selectCard(banker.card_1, 'leave')"
+           (mouseup)="selectCard(banker.card_1, 'up')">
     </div>
-
     <div class="card-2">
       <img [src]="banker.card_2.srcImg" [class]="banker.card_2.cssClass"  [id]="banker.card_2.cssId"
-           (mouseover)="banker.card_2.onOver()"
-           (mousedown)="banker.card_2.onDown()"
-           (mouseleave)="banker.card_2.onOut()"
-           (mouseup)="banker.card_2.onUp()">
+           (mouseover)="selectCard(banker.card_2, 'over')"
+           (mousedown)="selectCard(banker.card_2, 'down')"
+           (mouseleave)="selectCard(banker.card_2, 'leave')"
+           (mouseup)="selectCard(banker.card_2, 'up')">
     </div>
-
     <div class="card-3">
       <img [src]="banker.card_3.srcImg" [class]="banker.card_3.cssClass"  [id]="banker.card_3.cssId"
-           (mouseover)="banker.card_3.onOver()"
-           (mousedown)="banker.card_3.onDown()"
-           (mouseleave)="banker.card_3.onOut()"
-           (mouseup)="banker.card_3.onUp()">
+           (mouseover)="selectCard(banker.card_3, 'over')"
+           (mousedown)="selectCard(banker.card_3, 'down')"
+           (mouseleave)="selectCard(banker.card_3, 'leave')"
+           (mouseup)="selectCard(banker.card_3, 'up')">
     </div>
-
     <div class="card-4">
       <img [src]="banker.card_4.srcImg" [class]="banker.card_4.cssClass"  [id]="banker.card_4.cssId"
-           (mouseover)="banker.card_4.onOver()"
-           (mousedown)="banker.card_4.onDown()"
-           (mouseleave)="banker.card_4.onOut()"
-           (mouseup)="banker.card_4.onUp()">
+           (mouseover)="selectCard(banker.card_4, 'over')"
+           (mousedown)="selectCard(banker.card_4, 'down')"
+           (mouseleave)="selectCard(banker.card_4, 'leave')"
+           (mouseup)="selectCard(banker.card_4, 'up')">
     </div>
-
   </div>
 
   <div *ngIf="displayAppointeePanel" id="appointeePanel">
@@ -177,6 +172,11 @@
          (mousedown)="b_Delete.onDown($event)"
          (mouseleave)="b_Delete.onOut($event)"
          (mouseup)="b_Delete.onUp($event, player)">
+  </div>
+
+  <div *ngIf="displayCardPanel" id="cardPanel">
+    <img src="../../../assets/img/panel.png" id="cardPanel-img">
+
   </div>
 
 </div>

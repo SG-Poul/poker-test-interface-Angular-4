@@ -16,11 +16,11 @@
   border: 1px dotted mediumpurple;
   z-index: 1;
 }
-#playerPanel, #appointeePanel {
+#playerPanel, #appointeePanel, #cardPanel {
   position: relative;
-  margin-top: 10%;
+  margin-top: 12%;
   display: inline-block;
-  left: 24%;
+  left: 25%;
   width: 50%;
   height: 0;
   /*border: 2px double purple;*/
@@ -29,7 +29,7 @@
   max-width: 567px;
   max-height: 453px;
 }
-#playerPanel-img, #appointeePanel-img {
+#playerPanel-img, #appointeePanel-img, #cardPanel-img {
   position: absolute;
   max-width: 100%;
   height: auto;
@@ -42,9 +42,6 @@
   z-index: 3;
   /*border: 2px solid white;*/
 }
-
-
-
 
 /* FORMS */
 .ng-valid[required], .ng-valid.required  {
