@@ -202,7 +202,7 @@
     <div *ngIf="cardPanelChooseCard">
       <div *ngFor="let card of cardPanelCards">
         <img [src]="card.srcImg" [class]="card.cssClass"  [id]="card.cssId"
-             (click)="cardSelectSuit(card.id)">
+             (click)="cardSelectId(card.id)">
       </div>
     </div>
   </div>

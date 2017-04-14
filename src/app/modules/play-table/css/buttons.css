@@ -72,7 +72,7 @@
   top: 20%;
   left: 24%;
   width: 25%;
-  height: 28%;
+  height: 30%;
   z-index: 3;
 }
 .btn_suit-s-img {
@@ -80,7 +80,7 @@
   top: 20%;
   right: 24%;
   width: 25%;
-  height: 28%;
+  height: 30%;
   z-index: 3;
 }
 .btn_suit-c-img {
@@ -88,7 +88,7 @@
   top: 50%;
   left: 24%;
   width: 25%;
-  height: 28%;
+  height: 30%;
   z-index: 3;
 }
 .btn_suit-d-img {
@@ -96,6 +96,6 @@
   top: 50%;
   right: 24%;
   width: 25%;
-  height: 28%;
+  height: 30%;
   z-index: 3;
 }

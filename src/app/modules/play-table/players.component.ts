@@ -38,7 +38,7 @@ export class PlayersComponent implements AfterViewInit, OnInit {
   displaySelectDealer = false;
 
   displayCardPanel = false;
-  cardPanelChooseSuit = true;
+  cardPanelChooseSuit = false;
   cardPanelChooseCard = false;
   cardPanelCards:  CardPanel[];
 
@@ -130,6 +130,7 @@ export class PlayersComponent implements AfterViewInit, OnInit {
           this.currentCard = card;
           card.onUp();
           this.displayCardPanel = true;
+          this.cardPanelChooseSuit = true;
         }
         break;
       default:
@@ -157,6 +158,9 @@ export class PlayersComponent implements AfterViewInit, OnInit {
 
   cardSelectId(id: string): void {
     console.log('Densta: $', 'Method: cardSelectId', id);
+    this.currentCard.setCard(String(this.cardPanelSuit) + id);
+    this.displayCardPanel = false;
+    this.cardPanelChooseCard = false;
   }
 
   panelSave(): void {
