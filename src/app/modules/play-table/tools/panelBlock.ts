@@ -91,4 +91,27 @@ export class PanelBlock {
     this.displayCardPanel = false;
     this.cardPanelChooseCard = false;
   }
+
+  updateState(state) {
+    switch (state) {
+      case 0:
+        this.displayInitialPanel = true;
+        this.displayAppointeePanel = false;
+        this.displayPlayersPanel = false;
+        this.displayCardPanel = false;
+        this.cardPanelChooseSuit = false;
+        this.cardPanelChooseCard = false;
+        break;
+      case 1:
+        this.displayInitialPanel = false;
+        this.displayAppointeePanel = false;
+        this.displayPlayersPanel = false;
+        this.displayCardPanel = false;
+        this.cardPanelChooseSuit = false;
+        this.cardPanelChooseCard = false;
+        break;
+      default:
+        break;
+    }
+  }
 }

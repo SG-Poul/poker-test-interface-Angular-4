@@ -30,7 +30,7 @@ export class PlayersBlock {
   b_Dealer_init: Button;
   b_Dealer_game: Button;
 
-  displayPositions = true;
+  displayPositions = false;
   displaySelectDealer = false;
 
   constructor(parent: PlayTableComponent) {
@@ -101,5 +101,20 @@ export class PlayersBlock {
       if (!item.empty) {answer = false; }
     });
     return answer;
+  }
+
+  updateState(state) {
+    switch (state) {
+      case 0:
+        this.displayPositions = false;
+        this.displaySelectDealer = false;
+        break;
+      case 1:
+        this.displayPositions = true;
+        this.displaySelectDealer = true;
+        break;
+      default:
+        break;
+    }
   }
 }

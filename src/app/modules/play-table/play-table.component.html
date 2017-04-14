@@ -1,5 +1,4 @@
 <div id="table">
-  <img src="../../../assets/img/game_table.png" id="table-img">
   <div id="base">
     <div *ngFor="let player of playersBlock.players" class="players" id="p{{player.position}}">
       <div *ngIf="playersBlock.displayPositions && player.empty">
@@ -102,7 +101,6 @@
              (mouseup)="playersBlock.selectCard(banker.card_4, 'up')">
       </div>
     </div>
-
     <div *ngIf="panelBlock.displayInitialPanel" id="initialPanel">
       <div class="panel-form-div container">
         <form (ngSubmit)="panelBlock.panelSave()" #initialPanelForm="ngForm">
@@ -279,6 +277,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

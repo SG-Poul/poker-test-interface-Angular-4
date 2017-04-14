@@ -20,7 +20,6 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
 
   gameState: number;
 
-  server: number;
   serverNames = [
     {name: 'Real Game', value: 0},
     {name: 'Poker Stars', value: 1}
@@ -36,8 +35,10 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
     {name: 'Pot limit', value: 2},
     {name: 'Mixed', value: 3},
   ];
-  gameType: string;
-  gameBetType: string;
+
+  server: number;
+  gameType: number;
+  gameBetType: number;
   blindSmall: number;
   blindBig: number;
   blindAnte: number;
@@ -64,8 +65,22 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
 
   updateState(state) {
     console.log('Densta: $', 'updateState: ', state);
+    switch (state) {
+      case 0:
+        this.server = 0;
+        this.gameType = 0;
+        this.gameBetType = 0;
+        this.blindSmall = 0;
+        this.blindBig = 0;
+        this.blindAnte = 0;
+        break;
+      case 1:
+      default:
+        break;
+    }
+    this.panelBlock.updateState(state);
+    this.playersBlock.updateState(state);
     this.gameState = state;
-    console.log('Densta: $', 'Method: ', this.server, this.gameType, this.gameBetType, this.blindSmall, this.blindBig, this.blindAnte);
   }
 }
 export const STATE_INIT = 0;

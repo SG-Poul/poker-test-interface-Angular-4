@@ -1,26 +1,19 @@
 #table {
   width: 100%;
   height: 100%;
-  /*background-image: url(../../../assets/img/game_table.png);*/
-  /*background-size: contain;*/
+  background-image: url(../../../../assets/img/game_table.png);
+  background-size: contain;
   border: 1px dashed lightblue;
   max-width: 1375px;
   max-height: 907px;
-}
-#table-img {
-  position: absolute;
-  max-width: 98%;
-  height: auto;
-  z-index: 0;
 }
 
 #base {
   position: relative;
   display: inline-block;
   width: 100%;
-
   height: 0;
-  /*border: 5px solid black;*/
+  border: 5px solid black;
   z-index: 1;
   padding-bottom: 64%;
 }
