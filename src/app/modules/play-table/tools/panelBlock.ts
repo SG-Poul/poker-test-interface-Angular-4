@@ -23,6 +23,7 @@ export class PanelBlock {
   b_suit_s = new Button('suit-s', this.cardSelectSuit.bind(this), 'player');
   b_suit_c = new Button('suit-c', this.cardSelectSuit.bind(this), 'player');
 
+  displayInitialPanel = true;
   displayAppointeePanel = false;
   displayPlayersPanel = false;
 
@@ -44,8 +45,10 @@ export class PanelBlock {
   }
 
   panelSave(): void {
-    console.log('Densta: $', 'Method: save');
-    if (this.displayAppointeePanel) {
+    if (this.displayInitialPanel) {
+      this.displayInitialPanel = false;
+      this.parent.updateState(1);
+    } else if (this.displayAppointeePanel) {
       this.parent.playersBlock.currentPlayer.empty = false;
       this.parent.playersBlock.currentPlayer.name = 'YOU';
       this.parent.playersBlock.currentPlayer.balance = this.playerPanelData.balance;

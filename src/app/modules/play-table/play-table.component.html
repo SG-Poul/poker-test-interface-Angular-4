@@ -1,6 +1,3 @@
-<h5>
-  {{title}}
-</h5>
 <div id="table">
   <img src="../../../assets/img/game_table.png" id="table-img">
   <div id="base">
@@ -68,7 +65,6 @@
              (mouseup)="playersBlock.b_Dealer_game.onUp($event, player)">
       </div>
     </div>
-
     <div id="banker">
       <div class="card-0">
         <img [src]="banker.card_0.srcImg" [class]="banker.card_0.cssClass"  [id]="banker.card_0.cssId"
@@ -107,6 +103,79 @@
       </div>
     </div>
 
+    <div *ngIf="panelBlock.displayInitialPanel" id="initialPanel">
+      <div class="panel-form-div container">
+        <form (ngSubmit)="panelBlock.panelSave()" #initialPanelForm="ngForm">
+          <tr>
+            <td>
+              <div class="form-group" >
+                <label for="server" style="color: white">Server</label>
+                <select [(ngModel)]="server" class="form-control" id="server" name="server" required>
+                  <option *ngFor="let x of serverNames" [value]="x.value" [selected]="server == x.value">{{x.name}}</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div class="form-group" >
+                <label for="gameType" style="color: white">Game</label>
+                <select [(ngModel)]="gameType" class="form-control" id="gameType" name="gameType" required>
+                  <option *ngFor="let x of gameTypeList" [value]="x.value" [selected]="gameType == x.value">{{x.name}}</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div class="form-group" >
+                <label for="gameBetType" style="color: white">Bet Type</label>
+                <select [(ngModel)]="gameBetType" class="form-control" id="gameBetType" name="gameBetType" required>
+                  <option *ngFor="let x of gameBetTypeList" [value]="x.value" [selected]="gameBetType == x.value">{{x.name}}</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>
+              <div class="form-group" >
+                <label for="blindBig" style="color: white">Big Blind</label>
+                <input type="number" class="form-control" id="blindBig" required
+                       [(ngModel)]="blindBig" name="blindBig">
+              </div>
+            </td>
+            <td>
+              <div class="form-group" >
+                <label for="blindSmall" style="color: white">Small Blind</label>
+                <input type="number" class="form-control" id="blindSmall" required
+                       [(ngModel)]="blindSmall" name="blindSmall">
+              </div>
+            </td>
+            <td>
+              <div class="form-group" >
+                <label for="blindAnte" style="color: white">Ante</label>
+                <input type="number" class="form-control" id="blindAnte" required
+                       [(ngModel)]="blindAnte" name="blindAnte">
+              </div>
+            </td>
+          </tr>
+        </form>
+      </div>
+
+      <img *ngIf="initialPanelForm.form.valid"
+           [src]="panelBlock.b_Ok.srcNone" [class]="panelBlock.b_Ok.cssClass"
+           (mouseover)="panelBlock.b_Ok.onOver($event)"
+           (mousedown)="panelBlock.b_Ok.onDown($event)"
+           (mouseleave)="panelBlock.b_Ok.onOut($event)"
+           (mouseup)="panelBlock.b_Ok.onUp($event)">
+      <img [src]="panelBlock.b_Deny.srcNone" [class]="panelBlock.b_Deny.cssClass"
+           (mouseover)="panelBlock.b_Deny.onOver($event)"
+           (mousedown)="panelBlock.b_Deny.onDown($event)"
+           (mouseleave)="panelBlock.b_Deny.onOut($event)"
+           (mouseup)="panelBlock.b_Deny.onUp($event)">
+      <img [src]="panelBlock.b_Delete.srcNone" [class]="panelBlock.b_Delete.cssClass"
+           (mouseover)="panelBlock.b_Delete.onOver($event)"
+           (mousedown)="panelBlock.b_Delete.onDown($event)"
+           (mouseleave)="panelBlock.b_Delete.onOut($event)"
+           (mouseup)="panelBlock.b_Delete.onUp($event)">
+    </div>
     <div *ngIf="panelBlock.displayAppointeePanel" id="appointeePanel">
       <img src="../../../assets/img/panel.png" id="appointeePanel-img">
 
@@ -178,7 +247,6 @@
            (mouseleave)="panelBlock.b_Delete.onOut($event)"
            (mouseup)="panelBlock.b_Delete.onUp($event, player)">
     </div>
-
     <div *ngIf="panelBlock.displayCardPanel" id="cardPanel">
       <img src="../../../assets/img/panel.png" id="cardPanel-img">
       <div *ngIf="panelBlock.cardPanelChooseSuit" id="selectSuit">

@@ -4,6 +4,8 @@
   /*background-image: url(../../../assets/img/game_table.png);*/
   /*background-size: contain;*/
   border: 1px dashed lightblue;
+  max-width: 1375px;
+  max-height: 907px;
 }
 #table-img {
   position: absolute;
@@ -11,12 +13,12 @@
   height: auto;
   z-index: 0;
 }
+
 #base {
   position: relative;
   display: inline-block;
   width: 100%;
-  max-width: 1375px;
-  max-height: 907px;
+
   height: 0;
   /*border: 5px solid black;*/
   z-index: 1;
@@ -29,7 +31,8 @@
   border: 1px dotted mediumpurple;
   z-index: 1;
 }
-#playerPanel, #appointeePanel, #cardPanel {
+
+#initialPanel, #playerPanel, #appointeePanel, #cardPanel {
   position: relative;
   margin-top: 12%;
   display: inline-block;
@@ -39,10 +42,11 @@
   /*border: 2px double purple;*/
   z-index: 2;
   padding-bottom: 40%;
-  max-width: 567px;
-  max-height: 453px;
+  background-image: url(../../../../assets/img/panel.png);
+  background-size: cover;
+
 }
-#playerPanel-img, #appointeePanel-img, #cardPanel-img {
+#initialPanel-img, #playerPanel-img, #appointeePanel-img, #cardPanel-img {
   position: absolute;
   max-width: 100%;
   height: auto;
@@ -50,12 +54,12 @@
 }
 .panel-form-div {
   position: absolute;
+  padding: 5%;
   width: 100%;
   height: 100%;
   z-index: 3;
   /*border: 2px solid white;*/
 }
-
 /* FORMS */
 .ng-valid[required], .ng-valid.required  {
   border-left: 10px solid #42A948;

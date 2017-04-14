@@ -18,9 +18,34 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
   playersBlock: PlayersBlock;
   banker = new Banker();
 
+  gameState: number;
+
+  server: number;
+  serverNames = [
+    {name: 'Real Game', value: 0},
+    {name: 'Poker Stars', value: 1}
+  ];
+  gameTypeList = [
+    {name: 'Real Money', value: 0},
+    {name: 'Tournament', value: 1},
+    {name: 'Free', value: 2},
+  ];
+  gameBetTypeList  = [
+    {name: 'No limit', value: 0},
+    {name: 'Fixed limit', value: 1},
+    {name: 'Pot limit', value: 2},
+    {name: 'Mixed', value: 3},
+  ];
+  gameType: string;
+  gameBetType: string;
+  blindSmall: number;
+  blindBig: number;
+  blindAnte: number;
+
   constructor(private mainService: MainService) { }
 
   ngOnInit(): void {
+    this.gameState = 0;
     this.playersBlock = new PlayersBlock(this);
     this.panelBlock = new PanelBlock(this);
   }
@@ -36,4 +61,12 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
     this.banker.card_3.getDOMElement();
     this.banker.card_4.getDOMElement();
   }
+
+  updateState(state) {
+    console.log('Densta: $', 'updateState: ', state);
+    this.gameState = state;
+    console.log('Densta: $', 'Method: ', this.server, this.gameType, this.gameBetType, this.blindSmall, this.blindBig, this.blindAnte);
+  }
 }
+export const STATE_INIT = 0;
+export const STATE_SELECT_PLAYERS = 1;
