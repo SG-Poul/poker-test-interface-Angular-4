@@ -1,7 +1,7 @@
 /**
  * Created by Delvi-U on 09.04.2017.
  */
-export class ButtonBase {
+export class Button {
   buttonName: string;
   action: any;
   actionArgument: string;

@@ -1,7 +1,7 @@
 /**
  * Created by Delvi-U on 08.04.2017.
  */
-import {Card} from './card';
+import {Card} from '../card';
 export class Player {
   position: number;
   empty: boolean;
