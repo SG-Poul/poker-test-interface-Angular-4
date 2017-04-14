@@ -11,5 +11,58 @@
   height: auto;
   z-index: 0;
 }
+#base {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 1375px;
+  max-height: 907px;
+  height: 0;
+  /*border: 5px solid black;*/
+  z-index: 1;
+  padding-bottom: 64%;
+}
+.players{
+  position: absolute;
+  width: 15%;
+  height: 40%;
+  border: 1px dotted mediumpurple;
+  z-index: 1;
+}
+#playerPanel, #appointeePanel, #cardPanel {
+  position: relative;
+  margin-top: 12%;
+  display: inline-block;
+  left: 25%;
+  width: 50%;
+  height: 0;
+  /*border: 2px double purple;*/
+  z-index: 2;
+  padding-bottom: 40%;
+  max-width: 567px;
+  max-height: 453px;
+}
+#playerPanel-img, #appointeePanel-img, #cardPanel-img {
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+  z-index: 2;
+}
+.panel-form-div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  /*border: 2px solid white;*/
+}
 
+/* FORMS */
+.ng-valid[required], .ng-valid.required  {
+  border-left: 10px solid #42A948;
+  border-right: 10px solid #42A948;
+}
+.ng-invalid:not(form)  {
+  border-left: 10px solid orangered;
+  border-right: 10px solid orangered;
+}
 

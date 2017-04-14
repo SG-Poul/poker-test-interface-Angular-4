@@ -17,7 +17,7 @@ export class Card {
   domElement: any;
 
   constructor(ownerPosition: number, index: number) {
-    this.name = 'back';
+    this.name = 'invisible';
     this.path = '../../../assets/img/cards/card-';
     this.srcImg = this.path + this.name + '.png';
     this.srcBtnNone = this.path + 'btn_0.png';
@@ -33,7 +33,6 @@ export class Card {
 
   getDOMElement() {
     this.domElement = document.getElementById(this.cssId);
-    this.setButton(); // TODO: remove
   }
 
   onOver(): void {
