@@ -106,6 +106,7 @@ export class PanelBlock {
     this.parent.playersBlock.currentCard.setCard(String(this.cardPanelSuit) + id);
     this.displayCardPanel = false;
     this.cardPanelChooseCard = false;
+    this.parent.checkGameReady();
   }
 
   updateState(state) {
@@ -128,6 +129,10 @@ export class PanelBlock {
         this.displayCardPanel = false;
         this.cardPanelChooseSuit = false;
         this.cardPanelChooseCard = false;
+        break;
+      case 2:
+        break;
+      case 3:
         break;
       default:
         break;

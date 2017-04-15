@@ -4,7 +4,7 @@
 import {PlayTableComponent} from '../play-table.component';
 import {Button} from './button';
 import {Player} from './classes/player';
-import {Card} from './card';
+import {Card} from './classes/card';
 // TEMP CONST FOR DEBUG
 const PLAYERS: Player[] = [
   new Player(0),
@@ -96,7 +96,6 @@ export class PlayersBlock {
         console.error('Densta: $', 'Method: selectCard - UNKNOWN STATE');
         break;
     }
-    this.parent.checkGameReady();
   }
 
   /** check if there are no players to define appointee position */
@@ -149,6 +148,8 @@ export class PlayersBlock {
         this.displaySelectDealer = false;
         this.giveCardsPreflop();
         break;
+      case 3:
+        break;
       default:
         break;
     }
@@ -171,6 +172,19 @@ export class PlayersBlock {
         answer = item.position;
       }
     });
+    return answer;
+  }
+
+  getAppointeHaveCards(): boolean {
+    let answer = false;
+    this.players.forEach(function (player) {
+      if (!player.empty && player.isAppointee &&
+        player.card_0.name !== 'invisible' && player.card_0.name !== 'back' && !player.card_0.isButton &&
+        player.card_1.name !== 'invisible' && player.card_1.name !== 'back' && !player.card_1.isButton) {
+          answer = true;
+      }
+    });
+    console.log('Densta: $', 'getAppointeHaveCards: ', answer);
     return answer;
   }
 }

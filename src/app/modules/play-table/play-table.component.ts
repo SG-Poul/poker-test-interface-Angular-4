@@ -78,7 +78,10 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         break;
       case 2:
         break;
+      case 3:
+        break;
       default:
+        console.error('Densta: $', 'checkGameReady: no such stage');
         break;
     }
     this.panelBlock.updateState(state);
@@ -95,10 +98,20 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
           this.panelBlock.displaySysGo = true;
         }
         break;
+      case 2:
+        console.log('Densta: $', 'checkGameReady: ', this.gameState);
+        if (this.playersBlock.getAppointeHaveCards()) {
+          this.panelBlock.displaySysGo = true;
+        }
+        break;
+      case 3:
+        break;
       default:
+        console.error('Densta: $', 'checkGameReady: no such stage');
         break;
     }
   }
 }
 export const STATE_INIT = 0;
 export const STATE_SELECT_PLAYERS = 1;
+export const STATE_SELECT_APPOINTEE_CARD = 2;

@@ -189,16 +189,6 @@
            (mousedown)="panelBlock.b_Ok.onDown($event)"
            (mouseleave)="panelBlock.b_Ok.onOut($event)"
            (mouseup)="panelBlock.b_Ok.onUp($event)">
-      <img [src]="panelBlock.b_Deny.srcNone" [class]="panelBlock.b_Deny.cssClass"
-           (mouseover)="panelBlock.b_Deny.onOver($event)"
-           (mousedown)="panelBlock.b_Deny.onDown($event)"
-           (mouseleave)="panelBlock.b_Deny.onOut($event)"
-           (mouseup)="panelBlock.b_Deny.onUp($event)">
-      <img [src]="panelBlock.b_Delete.srcNone" [class]="panelBlock.b_Delete.cssClass"
-           (mouseover)="panelBlock.b_Delete.onOver($event)"
-           (mousedown)="panelBlock.b_Delete.onDown($event)"
-           (mouseleave)="panelBlock.b_Delete.onOut($event)"
-           (mouseup)="panelBlock.b_Delete.onUp($event)">
     </div>
     <div *ngIf="panelBlock.displayAppointeePanel" id="appointeePanel">
       <img src="../../../assets/img/panel.png" id="appointeePanel-img">
