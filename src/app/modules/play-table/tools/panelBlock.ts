@@ -62,7 +62,7 @@ export class PanelBlock {
     if (this.displayInitialPanel) {
       this.displayInitialPanel = false;
       this.parent.updateState(1);
-    } else if (this.displayAppointeePanel) {
+    } else if (this.displayAppointeePanel || this.parent.playersBlock.currentPlayer.isAppointee) {
       this.parent.playersBlock.currentPlayer.empty = false;
       this.parent.playersBlock.currentPlayer.name = 'YOU';
       this.parent.playersBlock.currentPlayer.balance = this.playerPanelData.balance;

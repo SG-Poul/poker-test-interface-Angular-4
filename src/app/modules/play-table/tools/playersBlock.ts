@@ -27,6 +27,7 @@ export class PlayersBlock {
   b_Position: Button;
   b_Name_appointee: Button;
   b_Name_player: Button;
+  b_Name_selected: Button;
   b_Dealer_init: Button;
   b_Dealer_game: Button;
 
@@ -38,6 +39,7 @@ export class PlayersBlock {
     this.b_Position = new Button('position', this.selectPlayerPosition.bind(this), 'player');
     this.b_Name_appointee = new Button('name_appointee', this.selectPlayerName.bind(this), 'player');
     this.b_Name_player = new Button('name_player', this.selectPlayerName.bind(this), 'player');
+    this.b_Name_selected = new Button('name_selected', this.selectPlayerName.bind(this), 'player');
     this.b_Dealer_init = new Button('dealer', this.selectPlayerDealer.bind(this), 'player');
     this.b_Dealer_game = new Button('gamedealer', this.changePlayerDealer.bind(this), 'player');
   }

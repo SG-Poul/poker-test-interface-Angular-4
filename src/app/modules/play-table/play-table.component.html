@@ -11,7 +11,6 @@
          (mouseleave)="panelBlock.b_sys_reset.onOut($event)"
          (mouseup)="panelBlock.b_sys_reset.onUp($event, 'd')">
 
-
     <div *ngFor="let player of playersBlock.players" class="players" id="p{{player.position}}">
       <div *ngIf="playersBlock.displayPositions && player.empty">
         <img [src]="playersBlock.b_Position.srcNone" [class]="playersBlock.b_Position.cssClass"
@@ -21,7 +20,7 @@
              (mouseup)="playersBlock.b_Position.onUp($event, player)">
       </div>
 
-      <div *ngIf="!player.empty && player.isAppointee">
+      <div *ngIf="!player.empty && player.isAppointee && !player.isSelected">
         <img [src]="playersBlock.b_Name_appointee.srcNone" [class]="playersBlock.b_Name_appointee.cssClass"
              (mouseover)="playersBlock.b_Name_appointee.onOver($event)"
              (mousedown)="playersBlock.b_Name_appointee.onDown($event)"
@@ -31,7 +30,7 @@
         <img src="../../../assets/img/panel_balance_appointee.png" class="panel-balance-img">
         <p class="text-balance">{{player.balance}}</p>
       </div>
-      <div *ngIf="!player.empty && !player.isAppointee">
+      <div *ngIf="!player.empty && !player.isAppointee && !player.isSelected">
         <div>
           <img [src]="playersBlock.b_Name_player.srcNone" [class]="playersBlock.b_Name_player.cssClass"
                (mouseover)="playersBlock.b_Name_player.onOver($event)"
@@ -45,7 +44,20 @@
           <p class="text-balance">{{player.balance}}</p>
         </div>
       </div>
-
+      <div *ngIf="!player.empty && player.isSelected">
+        <div>
+          <img [src]="playersBlock.b_Name_selected.srcNone" [class]="playersBlock.b_Name_selected.cssClass"
+               (mouseover)="playersBlock.b_Name_selected.onOver($event)"
+               (mousedown)="playersBlock.b_Name_selected.onDown($event)"
+               (mouseleave)="playersBlock.b_Name_selected.onOut($event)"
+               (mouseup)="playersBlock.b_Name_selected.onUp($event, player)">
+          <p class="text-over-btn">{{player.name}}</p>
+        </div>
+        <div>
+          <img src="../../../assets/img/panel_balance_selected.png" class="panel-balance-img">
+          <p class="text-balance">{{player.balance}}</p>
+        </div>
+      </div>
       <div class="card-0">
         <img [src]="player.card_0.srcImg" [class]="player.card_0.cssClass"  [id]="player.card_0.cssId"
              (mouseover)="playersBlock.selectCard(player.card_0, 'over')"
@@ -77,6 +89,7 @@
              (mouseup)="playersBlock.b_Dealer_game.onUp($event, player)">
       </div>
     </div>
+
     <div id="banker">
       <div class="card-0">
         <img [src]="banker.card_0.srcImg" [class]="banker.card_0.cssClass"  [id]="banker.card_0.cssId"

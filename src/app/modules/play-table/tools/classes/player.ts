@@ -7,6 +7,7 @@ export class Player {
   empty: boolean;
   isAppointee: boolean;
   isDealer: boolean;
+  isSelected: boolean;
   card_0: Card;
   card_1: Card;
   name?: string;
@@ -17,6 +18,7 @@ export class Player {
     this.empty = true;
     this.isAppointee = false;
     this.isDealer = false;
+    this.isSelected = false;
     this.card_0 = new Card(this.position, 0);
     this.card_1 = new Card(this.position, 1);
   }
