@@ -1,7 +1,7 @@
 /**
  * Created by Delvi-U on 12.04.2017.
  */
-import {Card} from './classes/card';
+import {Card} from './card';
 export class Banker {
   card_0: Card;
   card_1: Card;

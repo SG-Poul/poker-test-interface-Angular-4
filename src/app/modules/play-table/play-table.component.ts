@@ -2,10 +2,11 @@
  * Created by Delvi-U on 08.04.2017.
  */
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Banker} from './tools/banker';
+import {Banker} from './tools/classes/banker';
 import {MainService} from '../../main.service';
 import {PanelBlock} from './tools/panelBlock';
 import {PlayersBlock} from './tools/playersBlock';
+import {Game} from './tools/game';
 
 @Component({
   selector: 'app-play-table',
@@ -16,9 +17,7 @@ import {PlayersBlock} from './tools/playersBlock';
 export class PlayTableComponent implements AfterViewInit, OnInit {
   panelBlock: PanelBlock;
   playersBlock: PlayersBlock;
-  banker = new Banker();
-
-  gameState: number;
+  game: Game;
 
   serverNames = [
     {name: 'Real Game', value: 0},
@@ -36,19 +35,13 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
     {name: 'Mixed', value: 3},
   ];
 
-  server: number;
-  gameType: number;
-  gameBetType: number;
-  blindSmall: number;
-  blindBig: number;
-  blindAnte: number;
-
-  constructor(private mainService: MainService) { }
-
-  ngOnInit(): void {
-    this.gameState = 0;
+  constructor(private mainService: MainService) {
     this.playersBlock = new PlayersBlock(this);
     this.panelBlock = new PanelBlock(this);
+    this.game = new Game(this);
+  }
+
+  ngOnInit(): void {
   }
 
   ngAfterViewInit() {
@@ -56,62 +49,20 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
       item.card_0.getDOMElement();
       item.card_1.getDOMElement();
     });
-    this.banker.card_0.getDOMElement();
-    this.banker.card_1.getDOMElement();
-    this.banker.card_2.getDOMElement();
-    this.banker.card_3.getDOMElement();
-    this.banker.card_4.getDOMElement();
+    this.game.banker.card_0.getDOMElement();
+    this.game.banker.card_1.getDOMElement();
+    this.game.banker.card_2.getDOMElement();
+    this.game.banker.card_3.getDOMElement();
+    this.game.banker.card_4.getDOMElement();
   }
 
   updateState(state) {
     console.log('Densta: $', 'updateState: ', state);
-    switch (state) {
-      case 0:
-        this.server = null;
-        this.gameType = null;
-        this.gameBetType = null;
-        this.blindSmall = null;
-        this.blindBig = null;
-        this.blindAnte = null;
-        break;
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      default:
-        console.error('Densta: $', 'checkGameReady: no such stage');
-        break;
-    }
+    this.game.updateState(state);
     this.panelBlock.updateState(state);
     this.playersBlock.updateState(state);
-    this.gameState = state;
   }
-
   checkGameReady() {
-    switch (this.gameState) {
-      case 0:
-        break;
-      case 1:
-        if (this.playersBlock.getActivePlayers() >= 2 && this.playersBlock.getDealer() >= 0) {
-          this.panelBlock.displaySysGo = true;
-        }
-        break;
-      case 2:
-        console.log('Densta: $', 'checkGameReady: ', this.gameState);
-        if (this.playersBlock.getAppointeHaveCards()) {
-          this.panelBlock.displaySysGo = true;
-        }
-        break;
-      case 3:
-        break;
-      default:
-        console.error('Densta: $', 'checkGameReady: no such stage');
-        break;
-    }
+    this.game.checkGameReady();
   }
 }
-export const STATE_INIT = 0;
-export const STATE_SELECT_PLAYERS = 1;
-export const STATE_SELECT_APPOINTEE_CARD = 2;

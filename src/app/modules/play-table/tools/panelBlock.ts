@@ -51,7 +51,7 @@ export class PanelBlock {
   }
 
   sysGo(): void {
-    this.parent.updateState(this.parent.gameState + 1);
+    this.parent.updateState(this.parent.game.state + 1);
   }
 
   sysReset(): void {
