@@ -119,7 +119,7 @@ export class PlayersBlock {
   giveCardsPreflop(): void {
     console.log('Densta: $', 'Method: giveCardsPreflop');
     this.players.forEach(function (item) {
-      if (!item.empty && item.name && item.balance > 0) {
+      if (item.isActive) {
         if (item.isAppointee) {
           item.selectCards();
         } else {
@@ -133,6 +133,7 @@ export class PlayersBlock {
     for (let i in this.players) {
       if (this.players[i].balance < this.parent.blindBig + this.parent.blindAnte) {
         this.players[i].isActive = false;
+        this.players[i].hideCards();
       }
     }
   }
