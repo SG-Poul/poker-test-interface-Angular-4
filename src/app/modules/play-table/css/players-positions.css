@@ -88,8 +88,10 @@
   left: 30%;
 }
 #p0 .text-bet, #p1 .text-bet, #p2 .text-bet, #p3 .text-bet{
-  bottom: 0;
+  top: 89.5%;
   left: 35%;
+  width: 16%;
+  height: 8%;
 }
 
 #p4 .btn_position-img {
@@ -179,8 +181,10 @@
   left: 30%;
 }
 #p5 .text-bet, #p6 .text-bet, #p7 .text-bet, #p8 .text-bet{
-  top: 3%;
+  top: 2.5%;
   left: 35%;
+  width: 16%;
+  height: 8%;
 }
 
 #p9 .btn_position-img {
