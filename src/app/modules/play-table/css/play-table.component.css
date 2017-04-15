@@ -37,7 +37,6 @@
   padding-bottom: 40%;
   background-image: url(../../../../assets/img/panel.png);
   background-size: cover;
-
 }
 #initialPanel-img, #playerPanel-img, #appointeePanel-img, #cardPanel-img {
   position: absolute;
@@ -54,10 +53,10 @@
   /*border: 2px solid white;*/
 }
 /* FORMS */
-.ng-valid[required], .ng-valid.required  {
-  border-left: 10px solid #42A948;
-  border-right: 10px solid #42A948;
-}
+/*.ng-valid[required], .ng-valid.required  {*/
+  /*border-left: 10px solid #42A948;*/
+  /*border-right: 10px solid #42A948;*/
+/*}*/
 .ng-invalid:not(form)  {
   border-left: 10px solid orangered;
   border-right: 10px solid orangered;

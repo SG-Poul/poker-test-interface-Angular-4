@@ -11,6 +11,30 @@
          (mouseleave)="panelBlock.b_sys_reset.onOut($event)"
          (mouseup)="panelBlock.b_sys_reset.onUp($event, 'd')">
 
+    <img *ngIf="panelBlock.displayAction" [src]="panelBlock.b_action_call.srcNone" [class]="panelBlock.b_action_call.cssClass"
+         (mouseover)="panelBlock.b_action_call.onOver($event)"
+         (mousedown)="panelBlock.b_action_call.onDown($event)"
+         (mouseleave)="panelBlock.b_action_call.onOut($event)"
+         (mouseup)="panelBlock.b_action_call.onUp($event, 'd')">
+    <img *ngIf="panelBlock.displayAction" [src]="panelBlock.b_action_raise.srcNone" [class]="panelBlock.b_action_raise.cssClass"
+         (mouseover)="panelBlock.b_action_raise.onOver($event)"
+         (mousedown)="panelBlock.b_action_raise.onDown($event)"
+         (mouseleave)="panelBlock.b_action_raise.onOut($event)"
+         (mouseup)="panelBlock.b_action_raise.onUp($event, 'd')">
+    <img *ngIf="panelBlock.displayAction" [src]="panelBlock.b_action_fold.srcNone" [class]="panelBlock.b_action_fold.cssClass"
+         (mouseover)="panelBlock.b_action_fold.onOver($event)"
+         (mousedown)="panelBlock.b_action_fold.onDown($event)"
+         (mouseleave)="panelBlock.b_action_fold.onOut($event)"
+         (mouseup)="panelBlock.b_action_fold.onUp($event, 'd')">
+
+    <div *ngIf="panelBlock.displayAction" id="panelAction">
+      <img src="../../../assets/img/panel_action.png" class="panel-action-img">
+      <div class="panel-action-div">
+            <input type="number" class="form-control" id="setBet" required
+                   [(ngModel)]="panelBlock.setBet" name="setBet">
+      </div>
+    </div>
+
     <div *ngFor="let player of playersBlock.players" class="players" id="p{{player.position}}">
       <div *ngIf="playersBlock.displayPositions && player.empty">
         <img [src]="playersBlock.b_Position.srcNone" [class]="playersBlock.b_Position.cssClass"

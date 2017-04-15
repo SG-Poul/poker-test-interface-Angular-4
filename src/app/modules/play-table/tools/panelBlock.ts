@@ -17,6 +17,11 @@ export class PanelBlock {
   b_sys_go = new Button('sys_go', this.sysGo.bind(this), 'none');
   b_sys_reset = new Button('sys_reset', this.sysReset.bind(this), 'none');
 
+  b_action_call = new Button('action_call', this.actionCall.bind(this), 'none');
+  b_action_raise = new Button('action_raise', this.actionRaise.bind(this), 'none');
+  b_action_fold = new Button('action_fold', this.actionFold.bind(this), 'none');
+  setBet: number;
+
   b_Ok =     new Button('ok',     this.panelSave.bind(this),      'player');
   b_Deny =   new Button('deny',   this.panelClose.bind(this),     'player');
   b_Delete = new Button('delete', this.panelDelete.bind(this),    'player');
@@ -28,7 +33,7 @@ export class PanelBlock {
 
   displaySysGo = false;
   displaySysReset = false;
-
+  displayAction = true; // TODO: set false
   displayInitialPanel = true;
   displayAppointeePanel = false;
   displayPlayersPanel = false;
@@ -41,6 +46,7 @@ export class PanelBlock {
   constructor(parent: PlayTableComponent) {
     this.parent = parent;
     this.createPanelCards();
+    this.setBet = 0;
   }
 
   createPanelCards(): void {
@@ -56,6 +62,16 @@ export class PanelBlock {
 
   sysReset(): void {
    this.parent.updateState(0);
+  }
+
+  actionCall() {
+    console.log('Densta: $', 'Method: action call');
+  }
+  actionRaise() {
+    console.log('Densta: $', 'Method: action raise');
+  }
+  actionFold() {
+    console.log('Densta: $', 'Method: action fold');
   }
 
   panelSave(): void {
