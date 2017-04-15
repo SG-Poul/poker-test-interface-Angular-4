@@ -64,10 +64,12 @@ export class PlayersBlock {
   selectPlayerDealer(player: Player): void {
     player.isDealer = true;
     this.displaySelectDealer = false;
+    this.parent.checkGameReady();
   }
   changePlayerDealer(player: Player): void {
     player.isDealer = false;
     this.displaySelectDealer = true;
+    this.parent.checkGameReady();
   }
   selectCard(card: Card, state: string): void {
     switch (state) {
@@ -92,6 +94,7 @@ export class PlayersBlock {
         console.error('Densta: $', 'Method: selectCard - UNKNOWN STATE');
         break;
     }
+    this.parent.checkGameReady();
   }
 
   /** check if there are no players to define appointee position */
@@ -116,5 +119,25 @@ export class PlayersBlock {
       default:
         break;
     }
+  }
+
+  getActivePlayers(): number {
+    let answer = 0;
+    this.players.forEach(function (item) {
+      if (!item.empty && item.name && item.balance > 0) {
+        answer++;
+      }
+    });
+    return answer;
+  }
+
+  getDealer(): number {
+    let answer = -1;
+    this.players.forEach(function (item) {
+      if (!item.empty && item.name && item.balance > 0 && item.isDealer) {
+        answer = item.position;
+      }
+    });
+    return answer;
   }
 }

@@ -67,12 +67,12 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
     console.log('Densta: $', 'updateState: ', state);
     switch (state) {
       case 0:
-        this.server = 0;
-        this.gameType = 0;
-        this.gameBetType = 0;
-        this.blindSmall = 0;
-        this.blindBig = 0;
-        this.blindAnte = 0;
+        this.server = null;
+        this.gameType = null;
+        this.gameBetType = null;
+        this.blindSmall = null;
+        this.blindBig = null;
+        this.blindAnte = null;
         break;
       case 1:
       default:
@@ -81,6 +81,20 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
     this.panelBlock.updateState(state);
     this.playersBlock.updateState(state);
     this.gameState = state;
+  }
+
+  checkGameReady() {
+    switch (this.gameState) {
+      case 0:
+        break;
+      case 1:
+        if (this.playersBlock.getActivePlayers() >= 2 && this.playersBlock.getDealer() >= 0) {
+          this.panelBlock.displaySysGo = true;
+        }
+        break;
+      default:
+        break;
+    }
   }
 }
 export const STATE_INIT = 0;

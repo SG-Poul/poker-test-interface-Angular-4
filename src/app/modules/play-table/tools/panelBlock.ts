@@ -14,6 +14,9 @@ export class PanelBlock {
   };
   cardPanelCards:  CardPanel[];
 
+  b_sys_go = new Button('sys_go', this.sysGo.bind(this), 'none');
+  b_sys_reset = new Button('sys_reset', this.sysReset.bind(this), 'none');
+
   b_Ok =     new Button('ok',     this.panelSave.bind(this),      'player');
   b_Deny =   new Button('deny',   this.panelClose.bind(this),     'player');
   b_Delete = new Button('delete', this.panelDelete.bind(this),    'player');
@@ -22,6 +25,9 @@ export class PanelBlock {
   b_suit_h = new Button('suit-h', this.cardSelectSuit.bind(this), 'player');
   b_suit_s = new Button('suit-s', this.cardSelectSuit.bind(this), 'player');
   b_suit_c = new Button('suit-c', this.cardSelectSuit.bind(this), 'player');
+
+  displaySysGo = false;
+  displaySysReset = false;
 
   displayInitialPanel = true;
   displayAppointeePanel = false;
@@ -42,6 +48,14 @@ export class PanelBlock {
     for (let i = 0; i < 13; i++) {
       this.cardPanelCards.push(new CardPanel(i));
     }
+  }
+
+  sysGo(): void {
+    this.parent.updateState(this.parent.gameState + 1);
+  }
+
+  sysReset(): void {
+   this.parent.updateState(0);
   }
 
   panelSave(): void {
@@ -71,10 +85,12 @@ export class PanelBlock {
   }
 
   panelClose(): void {
+    this.displayInitialPanel = false;
     this.displayPlayersPanel = false;
     this.displayAppointeePanel = false;
     this.playerPanelData.name = null;
     this.playerPanelData.balance = null;
+    this.parent.checkGameReady();
   }
 
   cardSelectSuit(suit: string): void {
@@ -95,6 +111,8 @@ export class PanelBlock {
   updateState(state) {
     switch (state) {
       case 0:
+        this.displaySysGo = false;
+        this.displaySysReset = false;
         this.displayInitialPanel = true;
         this.displayAppointeePanel = false;
         this.displayPlayersPanel = false;
@@ -103,6 +121,7 @@ export class PanelBlock {
         this.cardPanelChooseCard = false;
         break;
       case 1:
+        this.displaySysReset = true;
         this.displayInitialPanel = false;
         this.displayAppointeePanel = false;
         this.displayPlayersPanel = false;

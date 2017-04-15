@@ -1,4 +1,20 @@
 /* BUTTONS AND PANELS */
+.btn_sys_go-img {
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  width: 10%;
+  height: 14%;
+  z-index: 3;
+}
+.btn_sys_reset-img {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 10%;
+  height: 14%;
+  z-index: 3;
+}
 
 .btn_ok-img {
   position: absolute;

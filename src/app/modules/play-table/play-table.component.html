@@ -1,5 +1,17 @@
 <div id="table">
   <div id="base">
+    <img *ngIf="panelBlock.displaySysGo" [src]="panelBlock.b_sys_go.srcNone" [class]="panelBlock.b_sys_go.cssClass"
+         (mouseover)="panelBlock.b_sys_go.onOver($event)"
+         (mousedown)="panelBlock.b_sys_go.onDown($event)"
+         (mouseleave)="panelBlock.b_sys_go.onOut($event)"
+         (mouseup)="panelBlock.b_sys_go.onUp($event, 'd')">
+    <img *ngIf="panelBlock.displaySysReset" [src]="panelBlock.b_sys_reset.srcNone" [class]="panelBlock.b_sys_reset.cssClass"
+         (mouseover)="panelBlock.b_sys_reset.onOver($event)"
+         (mousedown)="panelBlock.b_sys_reset.onDown($event)"
+         (mouseleave)="panelBlock.b_sys_reset.onOut($event)"
+         (mouseup)="panelBlock.b_sys_reset.onUp($event, 'd')">
+
+
     <div *ngFor="let player of playersBlock.players" class="players" id="p{{player.position}}">
       <div *ngIf="playersBlock.displayPositions && player.empty">
         <img [src]="playersBlock.b_Position.srcNone" [class]="playersBlock.b_Position.cssClass"
@@ -41,6 +53,7 @@
              (mouseleave)="playersBlock.selectCard(player.card_0, 'leave')"
              (mouseup)="playersBlock.selectCard(player.card_0, 'up')">
       </div>
+
       <div class="card-1">
         <img [src]="player.card_1.srcImg" [class]="player.card_1.cssClass"  [id]="player.card_1.cssId"
              (mouseover)="playersBlock.selectCard(player.card_1, 'over')"
