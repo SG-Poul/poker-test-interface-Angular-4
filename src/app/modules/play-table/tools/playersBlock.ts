@@ -112,54 +112,27 @@ export class PlayersBlock {
     this.players.forEach(function (item) {
       if (!item.empty && item.name && item.balance > 0) {
         if (item.isAppointee) {
-          item.card_0.setButton();
-          item.card_1.setButton();
+          item.selectCards();
         } else {
-          item.card_0.setCard('back');
-          item.card_1.setCard('back');
+          item.unknownCards();
         }
       }
     });
   }
 
-  updateState(state) {
-    switch (state) {
-      case 0:
-        this.players.forEach(function (item) {
-          item.empty = true;
-          item.name = null;
-          item.balance = null;
-          item.isDealer = false;
-          item.isAppointee = false;
-          item.card_0.setCard('invisible');
-          item.card_0.isButton = false;
-          item.card_1.setCard('invisible');
-          item.card_1.isButton = false;
-        });
-        this.displayPositions = false;
-        this.displaySelectDealer = false;
-        break;
-      case 1:
-        this.displayPositions = true;
-        this.displaySelectDealer = true;
-        break;
-      case 2:
-        this.displayPositions = false;
-        this.displaySelectDealer = false;
-        this.giveCardsPreflop();
-        break;
-      case 3:
-        break;
-      default:
-        break;
+  checkActivePlayersBeforeStart() {
+    for (let i in this.players) {
+      if (this.players[i].balance < this.parent.blindBig + this.parent.blindAnte) {
+        this.players[i].isActive = false;
+      }
     }
   }
 
-  getActivePlayers(): number {
-    let answer = 0;
-    this.players.forEach(function (item) {
-      if (!item.empty && item.name && item.balance > 0) {
-        answer++;
+  getActivePlayers(): Player[] {
+    let answer = [];
+    this.players.forEach(function (player) {
+      if (!player.empty && player.isActive) {
+        answer.push(player);
       }
     });
     return answer;
@@ -168,7 +141,7 @@ export class PlayersBlock {
   getDealer(): number {
     let answer = -1;
     this.players.forEach(function (item) {
-      if (!item.empty && item.name && item.balance > 0 && item.isDealer) {
+      if (!item.empty && item.isActive && item.isDealer) {
         answer = item.position;
       }
     });

@@ -3,74 +3,68 @@
  */
 import {PlayTableComponent} from '../play-table.component';
 import {Banker} from './classes/banker';
+import {Player} from './classes/player';
 
 export class Game {
   parent: PlayTableComponent;
   banker: Banker;
 
-  server: number;
-  gameType: number;
-  gameBetType: number;
-  blindSmall: number;
-  blindBig: number;
-  blindAnte: number;
-  state: number;
+  actionPlayer: number;
 
   constructor(parent) {
     this.parent = parent;
     this.banker = new Banker;
-    this.state = 0;
   }
 
-  updateState(state) {
-    this.state = state;
-    switch (state) {
-      case 0:
-        this.server = null;
-        this.gameType = null;
-        this.gameBetType = null;
-        this.blindSmall = null;
-        this.blindBig = null;
-        this.blindAnte = null;
-        break;
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      default:
-        console.error('Densta: $', 'checkGameReady: no such stage');
-        break;
+  preflopHanfler(): void {
+    let dealerIndex = this.getDealerIndex();
+    this.setActionPlayer(this.convertActivePlayersIndex(dealerIndex + 3));
+    console.log('Densta: $', 'actionPlayerIndex: ', this.actionPlayer);
+  }
+
+  payBlinds() {
+    let activePlayers = this.parent.playersBlock.getActivePlayers();
+    let dealerIndex = this.getDealerIndex();
+    for (let i in activePlayers) {
+      activePlayers[i].setBet(this.parent.blindAnte);
+    }
+    activePlayers[this.convertActivePlayersIndex(dealerIndex + 1)].setBet(Number(this.parent.blindSmall));
+    activePlayers[this.convertActivePlayersIndex(dealerIndex + 2)].setBet(Number(this.parent.blindBig));
+  }
+
+  private convertActivePlayersIndex(index: number) {
+    let activePlayers = this.parent.playersBlock.getActivePlayers();
+    let value = index;
+    while (value > activePlayers.length - 1) {
+      value -= activePlayers.length;
+    }
+    return value;
+  }
+
+  private setActionPlayer(index?: number) {
+    let activePlayers = this.parent.playersBlock.getActivePlayers();
+    let value: number;
+    if (index) {
+      value = index;
+      while (value > activePlayers.length) {
+        value -= activePlayers.length;
+      }
+      this.actionPlayer = value;
+    } else {
+      value = this.actionPlayer + 1;
+      while (index > activePlayers.length) {
+        index -= activePlayers.length;
+      }
+      this.actionPlayer = value;
     }
   }
 
-  checkGameReady() {
-    switch (this.state) {
-      case 0:
-        break;
-      case 1:
-        if (this.parent.playersBlock.getActivePlayers() >= 2 && this.parent.playersBlock.getDealer() >= 0) {
-          this.parent.panelBlock.displaySysGo = true;
-        }
-        break;
-      case 2:
-        console.log('Densta: $', 'checkGameReady: ', this.state);
-        if (this.parent.playersBlock.getAppointeHaveCards()) {
-          this.parent.panelBlock.displaySysGo = true;
-        }
-        break;
-      case 3:
-        break;
-      default:
-        console.error('Densta: $', 'checkGameReady: no such stage');
-        break;
+  private getDealerIndex(): number {
+    let activePlayers = this.parent.playersBlock.getActivePlayers();
+    for (let i in activePlayers) {
+      if (activePlayers[i].isDealer) {
+        return Number(i);
+      }
     }
   }
 }
-
-export const STATE_INIT = 0;
-export const STATE_SELECT_PLAYERS = 1;
-export const STATE_PREFLOP_SELECT_APPOINTEE_CARD = 2;
-export const STATE_PREFLOP_SELECT_PLAYERS_ACTIONS = 3;
-

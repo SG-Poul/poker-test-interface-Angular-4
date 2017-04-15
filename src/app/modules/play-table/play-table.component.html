@@ -74,7 +74,7 @@
              (mouseup)="playersBlock.selectCard(player.card_1, 'up')">
       </div>
 
-      <div *ngIf="!player.empty && playersBlock.displaySelectDealer">
+      <div *ngIf="!player.empty && player.isActive && playersBlock.displaySelectDealer">
         <img [src]="playersBlock.b_Dealer_init.srcNone" [class]="playersBlock.b_Dealer_init.cssClass"
              (mouseover)="playersBlock.b_Dealer_init.onOver($event)"
              (mousedown)="playersBlock.b_Dealer_init.onDown($event)"
@@ -82,11 +82,7 @@
              (mouseup)="playersBlock.b_Dealer_init.onUp($event, player)">
       </div>
       <div *ngIf="player.isDealer">
-        <img [src]="playersBlock.b_Dealer_game.srcNone" [class]="playersBlock.b_Dealer_game.cssClass"
-             (mouseover)="playersBlock.b_Dealer_game.onOver($event)"
-             (mousedown)="playersBlock.b_Dealer_game.onDown($event)"
-             (mouseleave)="playersBlock.b_Dealer_game.onOut($event)"
-             (mouseup)="playersBlock.b_Dealer_game.onUp($event, player)">
+        <img [src]="playersBlock.b_Dealer_game.srcNone" [class]="playersBlock.b_Dealer_game.cssClass">
       </div>
     </div>
 

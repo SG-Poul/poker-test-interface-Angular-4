@@ -51,7 +51,7 @@ export class PanelBlock {
   }
 
   sysGo(): void {
-    this.parent.updateState(this.parent.game.state + 1);
+    this.parent.nextState();
   }
 
   sysReset(): void {
@@ -67,10 +67,12 @@ export class PanelBlock {
       this.parent.playersBlock.currentPlayer.name = 'YOU';
       this.parent.playersBlock.currentPlayer.balance = this.playerPanelData.balance;
       this.parent.playersBlock.currentPlayer.isAppointee = true;
+      this.parent.playersBlock.currentPlayer.isActive = true;
     } else {
       this.parent.playersBlock.currentPlayer.empty = false;
       this.parent.playersBlock.currentPlayer.name = this.playerPanelData.name;
       this.parent.playersBlock.currentPlayer.balance = this.playerPanelData.balance;
+      this.parent.playersBlock.currentPlayer.isActive = true;
     }
     this.panelClose();
   }
@@ -107,36 +109,5 @@ export class PanelBlock {
     this.displayCardPanel = false;
     this.cardPanelChooseCard = false;
     this.parent.checkGameReady();
-  }
-
-  updateState(state) {
-    switch (state) {
-      case 0:
-        this.displaySysGo = false;
-        this.displaySysReset = false;
-        this.displayInitialPanel = true;
-        this.displayAppointeePanel = false;
-        this.displayPlayersPanel = false;
-        this.displayCardPanel = false;
-        this.cardPanelChooseSuit = false;
-        this.cardPanelChooseCard = false;
-        break;
-      case 1:
-        this.displaySysReset = true;
-        this.displayInitialPanel = false;
-        this.displayAppointeePanel = false;
-        this.displayPlayersPanel = false;
-        this.displayCardPanel = false;
-        this.cardPanelChooseSuit = false;
-        this.cardPanelChooseCard = false;
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      default:
-        break;
-    }
-    this.displaySysGo = false;
   }
 }

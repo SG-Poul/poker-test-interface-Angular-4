@@ -16,5 +16,6 @@ export class Banker {
     this.card_2 = new Card(10, 2);
     this.card_3 = new Card(10, 3);
     this.card_4 = new Card(10, 4);
+    this.balance = 0;
   }
 }
