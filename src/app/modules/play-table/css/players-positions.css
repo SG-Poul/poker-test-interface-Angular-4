@@ -60,8 +60,10 @@
   bottom: 26%;
   left: 29%;
 }
-#p0 .btn_name_appointee-img, #p0 .btn_name_player-img, #p0 .btn_name_selected-img, #p1 .btn_name_appointee-img, #p1 .btn_name_player-img, #p1 .btn_name_selected-img,
-#p2 .btn_name_appointee-img, #p2 .btn_name_player-img, #p2 .btn_name_selected-img, #p3 .btn_name_appointee-img, #p3 .btn_name_player-img, #p3 .btn_name_selected-img{
+#p0 .btn_name_appointee-img, #p0 .btn_name_player-img, #p0 .btn_name_selected-img, #p0 .btn_name_blocked-img,
+#p1 .btn_name_appointee-img, #p1 .btn_name_player-img, #p1 .btn_name_selected-img, #p1 .btn_name_blocked-img,
+#p2 .btn_name_appointee-img, #p2 .btn_name_player-img, #p2 .btn_name_selected-img, #p2 .btn_name_blocked-img,
+#p3 .btn_name_appointee-img, #p3 .btn_name_player-img, #p3 .btn_name_selected-img, #p3 .btn_name_blocked-img{
   top: 10%;
 }
 #p0 .text-over-btn, #p1 .text-over-btn, #p2 .text-over-btn, #p3 .text-over-btn{
@@ -100,7 +102,7 @@
   width: 23%;
   height: 68%;
 }
-#p4 .btn_name_appointee-img, #p4 .btn_name_player-img, #p4 .btn_name_selected-img {
+#p4 .btn_name_appointee-img, #p4 .btn_name_player-img, #p4 .btn_name_selected-img, #p4 .btn_name_blocked-img {
   width: 53%;
   height: 40%;
   top: 0;
@@ -153,8 +155,10 @@
   top: 0;
   left: 29%;
 }
-#p5 .btn_name_appointee-img, #p5 .btn_name_player-img, #p5 .btn_name_selected-img, #p6 .btn_name_appointee-img, #p6 .btn_name_player-img, #p6 .btn_name_selected-img,
-#p7 .btn_name_appointee-img, #p7 .btn_name_player-img, #p7 .btn_name_selected-img, #p8 .btn_name_appointee-img, #p8 .btn_name_player-img, #p8 .btn_name_selected-img{
+#p5 .btn_name_appointee-img, #p5 .btn_name_player-img, #p5 .btn_name_selected-img, #p5 .btn_name_blocked-img,
+#p6 .btn_name_appointee-img, #p6 .btn_name_player-img, #p6 .btn_name_selected-img, #p6 .btn_name_blocked-img,
+#p7 .btn_name_appointee-img, #p7 .btn_name_player-img, #p7 .btn_name_selected-img, #p7 .btn_name_blocked-img,
+#p8 .btn_name_appointee-img, #p8 .btn_name_player-img, #p8 .btn_name_selected-img, #p8 .btn_name_blocked-img{
   top: 54%;
 }
 #p5 .text-over-btn, #p6 .text-over-btn, #p7 .text-over-btn, #p8 .text-over-btn{
@@ -193,7 +197,7 @@
   width: 23%;
   height: 68%;
 }
-#p9 .btn_name_appointee-img, #p9 .btn_name_player-img, #p0 .btn_name_selected-img {
+#p9 .btn_name_appointee-img, #p9 .btn_name_player-img, #p9 .btn_name_selected-img, #p9 .btn_name_blocked-img {
   width: 53%;
   height: 40%;
   top: 0;
