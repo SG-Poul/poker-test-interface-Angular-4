@@ -19,10 +19,10 @@ export class Button {
               cssClass: string = null,
               cssId: string = null) {
     this.buttonName = buttonName;
-    this.path = (path) ? path : '../../../';
-    this.srcNone = this.path + 'assets/img/btn_' + buttonName + '_0.png';
-    this.srcHover = this.path + 'assets/img/btn_' + buttonName + '_1.png';
-    this.srcDown = this.path + 'assets/img/btn_' + buttonName + '_2.png';
+    this.path = (path) ? path : '../../../assets/img/buttons/btn_';
+    this.srcNone = this.path + buttonName + '_0.png';
+    this.srcHover = this.path + buttonName + '_1.png';
+    this.srcDown = this.path + buttonName + '_2.png';
     this.cssClass = (cssClass) ? cssClass : 'btn_' + buttonName + '-img';
     this.cssId = (cssId) ? cssId : 'btn_' + buttonName + '-img';
     this.action = action;
