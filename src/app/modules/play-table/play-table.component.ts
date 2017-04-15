@@ -75,6 +75,9 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         this.blindAnte = null;
         break;
       case 1:
+        break;
+      case 2:
+        break;
       default:
         break;
     }

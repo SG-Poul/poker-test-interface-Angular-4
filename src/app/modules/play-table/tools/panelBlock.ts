@@ -132,5 +132,6 @@ export class PanelBlock {
       default:
         break;
     }
+    this.displaySysGo = false;
   }
 }

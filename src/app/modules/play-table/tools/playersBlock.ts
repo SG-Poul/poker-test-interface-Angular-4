@@ -106,15 +106,46 @@ export class PlayersBlock {
     return answer;
   }
 
+  giveCardsPreflop(): void {
+    console.log('Densta: $', 'Method: giveCardsPreflop');
+    this.players.forEach(function (item) {
+      if (!item.empty && item.name && item.balance > 0) {
+        if (item.isAppointee) {
+          item.card_0.setButton();
+          item.card_1.setButton();
+        } else {
+          item.card_0.setCard('back');
+          item.card_1.setCard('back');
+        }
+      }
+    });
+  }
+
   updateState(state) {
     switch (state) {
       case 0:
+        this.players.forEach(function (item) {
+          item.empty = true;
+          item.name = null;
+          item.balance = null;
+          item.isDealer = false;
+          item.isAppointee = false;
+          item.card_0.setCard('invisible');
+          item.card_0.isButton = false;
+          item.card_1.setCard('invisible');
+          item.card_1.isButton = false;
+        });
         this.displayPositions = false;
         this.displaySelectDealer = false;
         break;
       case 1:
         this.displayPositions = true;
         this.displaySelectDealer = true;
+        break;
+      case 2:
+        this.displayPositions = false;
+        this.displaySelectDealer = false;
+        this.giveCardsPreflop();
         break;
       default:
         break;
