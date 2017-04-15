@@ -30,6 +30,7 @@ export class PlayersBlock {
   b_Name_selected: Button;
   b_Dealer_init: Button;
   b_Dealer_game: Button;
+  b_Token: Button;
 
   displayPositions = false;
   displaySelectDealer = false;
@@ -42,6 +43,7 @@ export class PlayersBlock {
     this.b_Name_selected = new Button('name_selected', this.selectPlayerName.bind(this), 'player');
     this.b_Dealer_init = new Button('dealer', this.selectPlayerDealer.bind(this), 'player');
     this.b_Dealer_game = new Button('gamedealer', this.changePlayerDealer.bind(this), 'player');
+    this.b_Token = new Button('token', this.changeBet.bind(this), 'player');
   }
 
   selectPlayerPosition(player: Player): void {
@@ -73,6 +75,11 @@ export class PlayersBlock {
     this.displaySelectDealer = true;
     this.parent.checkGameReady();
   }
+
+  changeBet() {
+    console.log('Densta: $', 'Method: changeBet');
+  }
+
   selectCard(card: Card, state: string): void {
     switch (state) {
       case 'over':

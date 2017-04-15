@@ -76,6 +76,8 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
 
   updateState(state) {
     this.state = state;
+    this.panelBlock.displaySysGo = false;
+    console.log('Densta: $', 'updateState: ', state);
     switch (state) {
       case STATE_INIT:
         this.server = null;
@@ -91,6 +93,8 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
           item.balance = null;
           item.isDealer = false;
           item.isAppointee = false;
+          item.isActive = false;
+          item.bet = 0;
           item.hideCards();
         });
         this.playersBlock.displayPositions = false;
@@ -138,8 +142,6 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         console.error('Densta: $', 'checkGameReady: no such stage');
         break;
     }
-    this.panelBlock.displaySysGo = false;
-    console.log('Densta: $', 'updateState: ', state);
   }
 
   nextState() {

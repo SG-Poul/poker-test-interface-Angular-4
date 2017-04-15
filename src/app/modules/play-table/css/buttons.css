@@ -66,6 +66,12 @@
   position: absolute;
   z-index: 3;
 }
+.panel-bet-img{
+  width: 50%;
+  height: 10%;
+  position: absolute;
+  z-index: 3;
+}
 .text-balance{
   position: absolute;
   display: block;
@@ -76,7 +82,15 @@
   font-weight: bold;
   color: white;
 }
-.btn_dealer-img, .btn_gamedealer-img{
+.text-bet{
+  position: absolute;
+  display: block;
+  font-size: 1.3vw;
+  z-index: 4;
+  font-weight: bold;
+  color: black;
+}
+.btn_dealer-img, .btn_gamedealer-img, .btn_token-img{
   width: 22%;
   height: 10%;
   position: absolute;

@@ -10,7 +10,6 @@
   left: 25%
 }
 
-
 #p0 {
   top: 0;
   left: 20%;
@@ -80,7 +79,18 @@
   bottom: 25%;
   left: 0;
 }
-
+#p0 .btn_token-img, #p1 .btn_token-img, #p2 .btn_token-img, #p3 .btn_token-img {
+  bottom: 1%;
+  left: 5%;
+}
+#p0 .panel-bet-img, #p1 .panel-bet-img, #p2 .panel-bet-img, #p3 .panel-bet-img{
+  bottom: 2%;
+  left: 30%;
+}
+#p0 .text-bet, #p1 .text-bet, #p2 .text-bet, #p3 .text-bet{
+  bottom: 0;
+  left: 35%;
+}
 
 #p4 .btn_position-img {
   top: 0;
@@ -118,6 +128,24 @@
   left: 32%;
   top: 0;
 }
+#p4 .btn_token-img {
+  width: 13%;
+  height: 21%;
+  left: 0;
+  bottom: 0;
+}
+#p4 .panel-bet-img {
+  width: 30%;
+  height: 19%;
+  left: 14%;
+  bottom: 2%;
+}
+#p4 .text-bet{
+  width: 16%;
+  height: 70%;
+  left: 17%;
+  top: 82%;
+}
 
 #p5 .btn_position-img, #p6 .btn_position-img, #p7 .btn_position-img, #p8 .btn_position-img {
   top: 0;
@@ -141,6 +169,18 @@
 #p7 .btn_dealer-img, #p7 .btn_gamedealer-img, #p8 .btn_dealer-img, #p8 .btn_gamedealer-img {
   top: 25%;
   right: 0;
+}
+#p5 .btn_token-img, #p6 .btn_token-img, #p7 .btn_token-img, #p8 .btn_token-img {
+  top: 1%;
+  left: 5%;
+}
+#p5 .panel-bet-img, #p6 .panel-bet-img, #p7 .panel-bet-img, #p8 .panel-bet-img{
+  top: 1%;
+  left: 30%;
+}
+#p5 .text-bet, #p6 .text-bet, #p7 .text-bet, #p8 .text-bet{
+  top: 3%;
+  left: 35%;
 }
 
 #p9 .btn_position-img {
@@ -178,4 +218,22 @@
   height: 23%;
   right: 38%;
   bottom: 0;
+}
+#p9 .btn_token-img {
+  width: 13%;
+  height: 21%;
+  right: 0;
+  top: 0;
+}
+#p9 .panel-bet-img {
+  width: 30%;
+  height: 19%;
+  right: 14%;
+  top: 2%;
+}
+#p9 .text-bet{
+  width: 16%;
+  height: 70%;
+  right: 25%;
+  top: 4.5%;
 }

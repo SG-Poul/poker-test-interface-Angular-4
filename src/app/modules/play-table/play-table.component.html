@@ -65,7 +65,6 @@
              (mouseleave)="playersBlock.selectCard(player.card_0, 'leave')"
              (mouseup)="playersBlock.selectCard(player.card_0, 'up')">
       </div>
-
       <div class="card-1">
         <img [src]="player.card_1.srcImg" [class]="player.card_1.cssClass"  [id]="player.card_1.cssId"
              (mouseover)="playersBlock.selectCard(player.card_1, 'over')"
@@ -83,6 +82,18 @@
       </div>
       <div *ngIf="player.isDealer">
         <img [src]="playersBlock.b_Dealer_game.srcNone" [class]="playersBlock.b_Dealer_game.cssClass">
+      </div>
+      <div *ngIf="player.isActive && player.bet > 0">
+        <img [src]="playersBlock.b_Token.srcNone" [class]="playersBlock.b_Token.cssClass"
+             (mouseover)="playersBlock.b_Token.onOver($event)"
+             (mousedown)="playersBlock.b_Token.onDown($event)"
+             (mouseleave)="playersBlock.b_Token.onOut($event)"
+             (mouseup)="playersBlock.b_Token.onUp($event, player)">
+        <div>
+          <img src="../../../assets/img/panel_bet.png" class="panel-bet-img">
+          <p class="text-bet">{{player.bet}}</p>
+        </div>
+
       </div>
     </div>
 
