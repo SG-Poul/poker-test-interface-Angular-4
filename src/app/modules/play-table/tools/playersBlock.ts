@@ -55,6 +55,7 @@ export class PlayersBlock {
       this.parent.panelBlock.displayPlayersPanel = true;
     }
   }
+
   selectPlayerName(player: Player): void {
     this.currentPlayer = player;
     if (this.currentPlayer.isAppointee) {
@@ -66,11 +67,13 @@ export class PlayersBlock {
       this.parent.panelBlock.displayPlayersPanel = true;
     }
   }
+
   selectPlayerDealer(player: Player): void {
     player.isDealer = true;
     this.displaySelectDealer = false;
     this.parent.checkGameReady();
   }
+
   selectCard(card: Card, state: string): void {
     switch (state) {
       case 'over':
@@ -101,6 +104,7 @@ export class PlayersBlock {
     this.displaySelectDealer = true;
     this.parent.checkGameReady();
   }
+
   changeBet() {
     console.log('Densta: $', 'Method: changeBet');
   }
@@ -155,10 +159,9 @@ export class PlayersBlock {
     this.currentPlayer.setBet(this.tableBet);
     this.currentPlayer.doneAction = true;
     this.resetAction();
-    this.setNextActionPlayerIndex();
-    this.setSelected(this.actionPlayerIndex);
-    this.setPanelBet();
+    this.nextPlayer();
   }
+
   actionRaise() {
     if (this.panelBet < this.tableBet * 2 && this.panelBet !== this.currentPlayer.balance + this.currentPlayer.bet) {
       this.panelBet = this.tableBet * 2 < this.currentPlayer.balance + this.currentPlayer.bet ? this.tableBet * 2 : this.currentPlayer.bet + this.currentPlayer.balance;
@@ -167,18 +170,15 @@ export class PlayersBlock {
       this.currentPlayer.doneAction = true;
       this.tableBet = this.panelBet;
       this.resetAction();
-      this.setNextActionPlayerIndex();
-      this.setSelected(this.actionPlayerIndex);
-      this.setPanelBet();
+      this.nextPlayer();
     }
   }
+
   actionFold() {
     this.currentPlayer.isActive = false;
     this.currentPlayer.hideCards();
     this.resetAction();
-    this.setNextActionPlayerIndex();
-    this.setSelected(this.actionPlayerIndex);
-    this.setPanelBet();
+    this.nextPlayer();
   }
 
   resetAction() {
@@ -191,10 +191,13 @@ export class PlayersBlock {
   checkSetAppointee(): any {
     let answer = true;
     this.players.forEach(function (item) {
-      if (!item.empty) {answer = false; }
+      if (!item.empty) {
+        answer = false;
+      }
     });
     return answer;
   }
+
   checkActivePlayersBeforeStart() {
     for (let i in this.players) {
       if (this.players[i].balance < this.parent.blindBig + this.parent.blindAnte) {
@@ -203,6 +206,7 @@ export class PlayersBlock {
       }
     }
   }
+
   checkAppointeHaveCards(): boolean {
     let answer = false;
     this.players.forEach(function (player) {
@@ -215,6 +219,7 @@ export class PlayersBlock {
     console.log('Densta: $', 'getAppointeHaveCards: ', answer);
     return answer;
   }
+
   checkActivePlayers(): number {
     let answer = 0;
     this.players.forEach(function (player) {
@@ -229,7 +234,8 @@ export class PlayersBlock {
   private convertIndex(index: number): number {
     return index % this.players.length;
   }
-  private setNextActionPlayerIndex(step: number = 1): void {
+
+  private setNextActionPlayerIndex(step: number = 1): void { // TODO: sure to use only on init
     for (let i = 0; i < step; i++) {
       this.actionPlayerIndex++;
       this.actionPlayerIndex = this.convertIndex(this.actionPlayerIndex);
@@ -239,6 +245,28 @@ export class PlayersBlock {
       }
     }
   }
+
+  private nextPlayer(): void {
+    this.actionPlayerIndex++;
+    this.actionPlayerIndex = this.convertIndex(this.actionPlayerIndex);
+    let checkCount = 0;
+    while (checkCount <= this.players.length && (!this.players[this.actionPlayerIndex].isActive || this.players[this.actionPlayerIndex].allIn)) {
+      checkCount++;
+      this.actionPlayerIndex++;
+      this.actionPlayerIndex = this.convertIndex(this.actionPlayerIndex);
+    }
+    if (checkCount > this.players.length) {
+      console.error('Densta: $', 'game over'); // TODO: add game over method
+      return null;
+    }
+    if (this.players[this.actionPlayerIndex].doneAction && this.players[this.actionPlayerIndex].bet === this.tableBet) {
+        this.parent.nextState();
+    } else {
+      this.setSelected(this.actionPlayerIndex);
+      this.setPanelBet();
+    }
+  }
+
   getDealer(): number {
     let answer = -1;
     this.players.forEach(function (item) {

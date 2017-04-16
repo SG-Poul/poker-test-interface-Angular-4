@@ -90,6 +90,8 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
           item.isDealer = false;
           item.isAppointee = false;
           item.isActive = false;
+          item.doneAction = false;
+          item.allIn = false;
           item.bet = 0;
           item.hideCards();
         });
