@@ -95,6 +95,8 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
           item.bet = 0;
           item.hideCards();
         });
+        this.playersBlock.banker.balance = 0;
+        this.playersBlock.banker.hideCards();
         this.playersBlock.displayPositions = false;
         this.playersBlock.displaySelectDealer = false;
         this.playersBlock.panelBet = null;

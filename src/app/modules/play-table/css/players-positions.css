@@ -10,6 +10,27 @@
   left: 25%
 }
 
+#banker .btn_token-img {
+  width: 6.5%;
+  height: 21%;
+  left: 15%;
+  top: 40%;
+}
+#banker .panel-bet-img {
+  width: 15%;
+  height: 19%;
+  left: 22%;
+  top: 40%;
+}
+#banker .text-bet{
+  width: 8%;
+  height: 70%;
+  left: 23.5%;
+  top: 43%;
+}
+
+
+
 #p0 {
   top: 0;
   left: 20%;

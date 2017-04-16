@@ -111,9 +111,10 @@ export class PlayersBlock {
 
   /** game stages handler*/
   payBlinds(): void {
-    for (let i in this.players) {
-      if (this.players[i].isActive) {
-        this.players[i].setBet(this.parent.blindAnte);
+    for (const player of this.players) {
+      if (player.isActive) {
+        player.balance -= this.parent.blindAnte;
+        this.banker.balance += this.parent.blindAnte;
       }
     }
     this.actionPlayerIndex = this.getDealer();

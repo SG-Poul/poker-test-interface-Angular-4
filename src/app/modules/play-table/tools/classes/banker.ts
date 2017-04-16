@@ -18,4 +18,17 @@ export class Banker {
     this.card_4 = new Card(10, 4);
     this.balance = 0;
   }
+
+  hideCards() {
+    this.card_0.setCard('invisible');
+    this.card_0.isButton = false;
+    this.card_1.setCard('invisible');
+    this.card_1.isButton = false;
+    this.card_2.setCard('invisible');
+    this.card_2.isButton = false;
+    this.card_3.setCard('invisible');
+    this.card_3.isButton = false;
+    this.card_4.setCard('invisible');
+    this.card_4.isButton = false;
+  }
 }

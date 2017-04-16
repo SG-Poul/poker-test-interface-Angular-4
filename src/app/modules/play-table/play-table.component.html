@@ -170,6 +170,19 @@
              (mouseleave)="playersBlock.selectCard(playersBlock.banker.card_4, 'leave')"
              (mouseup)="playersBlock.selectCard(playersBlock.banker.card_4, 'up')">
       </div>
+
+      <div *ngIf="playersBlock.banker.balance > 0">
+        <img [src]="playersBlock.b_Token.srcNone" [class]="playersBlock.b_Token.cssClass"
+             (mouseover)="playersBlock.b_Token.onOver($event)"
+             (mousedown)="playersBlock.b_Token.onDown($event)"
+             (mouseleave)="playersBlock.b_Token.onOut($event)"
+             (mouseup)="playersBlock.b_Token.onUp($event, playersBlock.banker)">
+        <div>
+          <img src="../../../assets/img/panel_bet.png" class="panel-bet-img">
+          <p class="text-bet">{{playersBlock.banker.balance}}</p>
+        </div>
+
+      </div>
     </div>
     <div *ngIf="panelBlock.displayInitialPanel" id="initialPanel">
       <div class="panel-form-div container">
