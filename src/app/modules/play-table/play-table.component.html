@@ -26,12 +26,11 @@
          (mousedown)="panelBlock.b_action_fold.onDown($event)"
          (mouseleave)="panelBlock.b_action_fold.onOut($event)"
          (mouseup)="panelBlock.b_action_fold.onUp($event, 'd')">
-
     <div *ngIf="panelBlock.displayAction" id="panelAction">
       <img src="../../../assets/img/panel_action.png" class="panel-action-img">
       <div class="panel-action-div">
-            <input type="number" class="form-control" id="setBet" required
-                   [(ngModel)]="panelBlock.setBet" name="setBet">
+            <input type="number" class="form-control" id="panelBet" required
+                   [(ngModel)]="playersBlock.panelBet" name="panelBet">
       </div>
     </div>
 
@@ -236,8 +235,6 @@
            (mouseup)="panelBlock.b_Ok.onUp($event)">
     </div>
     <div *ngIf="panelBlock.displayAppointeePanel" id="appointeePanel">
-      <img src="../../../assets/img/panel.png" id="appointeePanel-img">
-
       <div class="panel-form-div container">
         <form (ngSubmit)="panelBlock.panelSave()" #playersPanelForm="ngForm">
 
@@ -270,8 +267,6 @@
            (mouseup)="panelBlock.b_Delete.onUp($event, player)">
     </div>
     <div *ngIf="panelBlock.displayPlayersPanel" id="playerPanel">
-      <img src="../../../assets/img/panel.png" id="playerPanel-img">
-
       <div class="panel-form-div container">
         <form (ngSubmit)="panelSave()" #playersPanelForm="ngForm">
           <div class="form-group">
@@ -307,7 +302,6 @@
            (mouseup)="panelBlock.b_Delete.onUp($event, player)">
     </div>
     <div *ngIf="panelBlock.displayCardPanel" id="cardPanel">
-      <img src="../../../assets/img/panel.png" id="cardPanel-img">
       <div *ngIf="panelBlock.cardPanelChooseSuit" id="selectSuit">
         <img [src]="panelBlock.b_suit_d.srcNone" [class]="panelBlock.b_suit_d.cssClass"
              (mouseover)="panelBlock.b_suit_d.onOver($event)"

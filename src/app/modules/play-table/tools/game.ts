@@ -10,6 +10,7 @@ export class Game {
   banker: Banker;
 
   actionPlayer: number;
+  tableBet: number;
 
   constructor(parent) {
     this.parent = parent;
@@ -17,9 +18,9 @@ export class Game {
   }
 
   preflopHanfler(): void {
+    this.tableBet = this.parent.blindBig;
     let dealerIndex = this.getDealerIndex();
     this.setActionPlayer(this.convertActivePlayersIndex(dealerIndex + 3));
-    console.log('Densta: $', 'actionPlayerIndex: ', this.actionPlayer);
   }
 
   payBlinds() {
@@ -34,29 +35,17 @@ export class Game {
 
   private convertActivePlayersIndex(index: number) {
     let activePlayers = this.parent.playersBlock.getActivePlayers();
-    let value = index;
-    while (value > activePlayers.length - 1) {
-      value -= activePlayers.length;
-    }
+    let value = index % activePlayers.length;
     return value;
   }
 
-  private setActionPlayer(index?: number) {
+  private setActionPlayer(index: number) {
     let activePlayers = this.parent.playersBlock.getActivePlayers();
-    let value: number;
-    if (index) {
-      value = index;
-      while (value > activePlayers.length) {
-        value -= activePlayers.length;
-      }
-      this.actionPlayer = value;
-    } else {
-      value = this.actionPlayer + 1;
-      while (index > activePlayers.length) {
-        index -= activePlayers.length;
-      }
-      this.actionPlayer = value;
+    if (!this.actionPlayer) {
+      this.actionPlayer = 0;
     }
+    this.actionPlayer = this.convertActivePlayersIndex(index);
+    this.parent.playersBlock.setSelected(activePlayers[this.actionPlayer]);
   }
 
   private getDealerIndex(): number {

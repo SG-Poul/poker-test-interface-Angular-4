@@ -36,6 +36,8 @@ export class PlayersBlock {
   displayPositions = false;
   displaySelectDealer = false;
 
+  panelBet: number;
+
   constructor(parent: PlayTableComponent) {
     this.parent = parent;
   }
@@ -109,7 +111,6 @@ export class PlayersBlock {
   }
 
   giveCardsPreflop(): void {
-    console.log('Densta: $', 'Method: giveCardsPreflop');
     this.players.forEach(function (item) {
       if (item.isActive) {
         if (item.isAppointee) {
@@ -161,5 +162,16 @@ export class PlayersBlock {
     });
     console.log('Densta: $', 'getAppointeHaveCards: ', answer);
     return answer;
+  }
+
+  setSelected(player: Player): void {
+    player.isSelected = true;
+    this.currentPlayer = player;
+    this.setPanelBet();
+    this.parent.panelBlock.displayAction = true;
+  }
+
+  setPanelBet(): void {
+    this.panelBet = this.parent.game.tableBet < this.currentPlayer.balance ? this.parent.game.tableBet : this.currentPlayer.balance;
   }
 }

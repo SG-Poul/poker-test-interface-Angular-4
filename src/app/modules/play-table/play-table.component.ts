@@ -99,6 +99,7 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         });
         this.playersBlock.displayPositions = false;
         this.playersBlock.displaySelectDealer = false;
+        this.playersBlock.panelBet = null;
         // Panel block
         this.panelBlock.displaySysGo = false;
         this.panelBlock.displaySysReset = false;
@@ -106,6 +107,7 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         this.panelBlock.displayAppointeePanel = false;
         this.panelBlock.displayPlayersPanel = false;
         this.panelBlock.displayCardPanel = false;
+        this.panelBlock.displayAction = false;
         this.panelBlock.cardPanelChooseSuit = false;
         this.panelBlock.cardPanelChooseCard = false;
         break;

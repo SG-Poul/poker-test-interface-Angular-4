@@ -33,7 +33,7 @@ export class PanelBlock {
 
   displaySysGo = false;
   displaySysReset = false;
-  displayAction = true; // TODO: set false
+  displayAction = false;
   displayInitialPanel = true;
   displayAppointeePanel = false;
   displayPlayersPanel = false;
@@ -46,7 +46,6 @@ export class PanelBlock {
   constructor(parent: PlayTableComponent) {
     this.parent = parent;
     this.createPanelCards();
-    this.setBet = 0;
   }
 
   createPanelCards(): void {
