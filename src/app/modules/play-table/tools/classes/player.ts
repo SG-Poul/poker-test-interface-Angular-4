@@ -31,12 +31,12 @@ export class Player {
     this.card_1 = new Card(this.position, 1);
   }
 
-  setBet(value: number): boolean {
+  setBet(value: number): void {
     if (this.balance >= value) {
-      this.balance -= value;
-      this.bet += value;
+      this.balance -= value - this.bet;
+      this.bet += value - this.bet;
     } else {
-      this.bet += this.balance;
+      this.bet += this.balance - this.bet;
       this.balance = 0;
       this.allIn = true;
     }
