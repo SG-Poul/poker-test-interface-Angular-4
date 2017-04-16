@@ -12,6 +12,18 @@ export const STATE_SELECT_DEALER = 2;
 export const STATE_PAY_BLINDS = 3;
 export const STATE_PREFLOP_SELECT_APPOINTEE_CARD = 4;
 export const STATE_PREFLOP_SELECT_PLAYERS_ACTIONS = 5;
+export const STATE_PREFLOP_CLOSE = 6;
+export const STATE_FLOP_SELECT_DESK_CARDS = 7;
+export const STATE_FLOP_SELECT_PLAYERS_ACTIONS = 8;
+export const STATE_FLOP_CLOSE = 9;
+export const STATE_TURN_SELECT_DESK_CARDS = 10;
+export const STATE_TURN_SELECT_PLAYERS_ACTIONS = 11;
+export const STATE_TURN_CLOSE = 12;
+export const STATE_RIVER_SELECT_DESK_CARDS = 13;
+export const STATE_RIVER_SELECT_PLAYERS_ACTIONS = 14;
+export const STATE_RIVER_CLOSE = 15;
+export const STATE_SHOWDOWN = 16;
+
 
 @Component({
   selector: 'app-play-table',
@@ -138,7 +150,43 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         this.playersBlock.giveCardsPreflop();
         break;
       case STATE_PREFLOP_SELECT_PLAYERS_ACTIONS:
-        this.playersBlock.preflopHanfler();
+        this.playersBlock.preflopHandler();
+        break;
+      case STATE_PREFLOP_CLOSE:
+        this.playersBlock.closeRound();
+        this.nextState();
+        break;
+      case STATE_FLOP_SELECT_DESK_CARDS:
+        this.playersBlock.banker.selectFlop();
+        break;
+      case STATE_FLOP_SELECT_PLAYERS_ACTIONS:
+        this.playersBlock.mainHandler();
+        break;
+      case STATE_FLOP_CLOSE:
+        this.playersBlock.closeRound();
+        this.nextState();
+        break;
+      case STATE_TURN_SELECT_DESK_CARDS:
+        this.playersBlock.banker.selectTurn();
+        break;
+      case STATE_TURN_SELECT_PLAYERS_ACTIONS:
+        this.playersBlock.mainHandler();
+        break;
+      case STATE_TURN_CLOSE:
+        this.playersBlock.closeRound();
+        this.nextState();
+        break;
+      case STATE_RIVER_SELECT_DESK_CARDS:
+        this.playersBlock.banker.selectRiver();
+        break;
+      case STATE_RIVER_SELECT_PLAYERS_ACTIONS:
+        this.playersBlock.mainHandler();
+        break;
+      case STATE_RIVER_CLOSE:
+        this.playersBlock.closeRound();
+        this.nextState();
+        break;
+      case STATE_SHOWDOWN:
         break;
       default:
         console.error('Densta: $', 'checkGameReady: no such stage');
@@ -173,6 +221,37 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         }
         break;
       case STATE_PREFLOP_SELECT_PLAYERS_ACTIONS:
+        break;
+      case STATE_PREFLOP_CLOSE:
+        break;
+      case STATE_FLOP_SELECT_DESK_CARDS:
+        if (this.playersBlock.banker.checkFlopHaveCards()) {
+          this.nextState();
+        }
+        break;
+      case STATE_FLOP_SELECT_PLAYERS_ACTIONS:
+        break;
+      case STATE_FLOP_CLOSE:
+        break;
+      case STATE_TURN_SELECT_DESK_CARDS:
+        if (this.playersBlock.banker.checkTurnHaveCards()) {
+          this.nextState();
+        }
+        break;
+      case STATE_TURN_SELECT_PLAYERS_ACTIONS:
+        break;
+      case STATE_TURN_CLOSE:
+        break;
+      case STATE_RIVER_SELECT_DESK_CARDS:
+        if (this.playersBlock.banker.checkRiverHaveCards()) {
+          this.nextState();
+        }
+        break;
+      case STATE_RIVER_SELECT_PLAYERS_ACTIONS:
+        break;
+      case STATE_RIVER_CLOSE:
+        break;
+      case STATE_SHOWDOWN:
         break;
       default:
         console.error('Densta: $', 'checkGameReady: no such stage');

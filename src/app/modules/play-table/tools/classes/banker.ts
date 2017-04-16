@@ -31,4 +31,45 @@ export class Banker {
     this.card_4.setCard('invisible');
     this.card_4.isButton = false;
   }
+
+  selectFlop() {
+    this.card_0.setButton();
+    this.card_1.setButton();
+    this.card_2.setButton();
+  }
+
+  selectTurn() {
+    this.card_3.setButton();
+  }
+
+  selectRiver() {
+    this.card_4.setButton();
+  }
+
+  checkFlopHaveCards() {
+    let answer = false;
+      if (
+        this.card_0.name !== 'invisible' && this.card_0.name !== 'back' && !this.card_0.isButton &&
+        this.card_1.name !== 'invisible' && this.card_1.name !== 'back' && !this.card_1.isButton &&
+        this.card_2.name !== 'invisible' && this.card_2.name !== 'back' && !this.card_2.isButton) {
+        answer = true;
+      }
+    return answer;
+  }
+
+  checkTurnHaveCards() {
+    let answer = false;
+    if (this.card_3.name !== 'invisible' && this.card_3.name !== 'back' && !this.card_3.isButton) {
+      answer = true;
+    }
+    return answer;
+  }
+
+  checkRiverHaveCards() {
+    let answer = false;
+    if (this.card_4.name !== 'invisible' && this.card_4.name !== 'back' && !this.card_4.isButton) {
+      answer = true;
+    }
+    return answer;
+  }
 }

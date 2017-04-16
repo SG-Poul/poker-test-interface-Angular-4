@@ -58,4 +58,14 @@ export class Player {
     this.card_0.setCard('back');
     this.card_1.setCard('back');
   }
+
+  checkCards(): boolean {
+    let answer = false;
+    if (
+      this.card_0.name !== 'invisible' && this.card_0.name !== 'back' && !this.card_0.isButton &&
+      this.card_1.name !== 'invisible' && this.card_1.name !== 'back' && !this.card_1.isButton) {
+      answer = true;
+    }
+    return answer;
+  }
 }

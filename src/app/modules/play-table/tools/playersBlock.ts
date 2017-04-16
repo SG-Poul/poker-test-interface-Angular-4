@@ -136,11 +136,31 @@ export class PlayersBlock {
     }
   }
 
-  preflopHanfler(): void {
+  preflopHandler(): void {
+    for (const player of this.players) {
+        player.doneAction = false;
+    }
     this.tableBet = this.parent.blindBig;
     this.actionPlayerIndex = this.getDealer();
     this.setNextActionPlayerIndex(3);
     this.setSelected(this.actionPlayerIndex);
+  }
+  mainHandler(): void {
+    for (const player of this.players) {
+      player.doneAction = false;
+    }
+    this.tableBet = 0;
+    this.actionPlayerIndex = this.getDealer();
+    this.nextPlayer();
+  }
+
+  closeRound(): void {
+    for (const player of this.players) {
+        this.banker.balance += player.bet;
+        player.bet = 0;
+    }
+    this.actionPlayerIndex = null;
+    this.tableBet = 0;
   }
 
   /** ACTIONS */
@@ -148,29 +168,26 @@ export class PlayersBlock {
   setSelected(index: number): void {
     this.players[index].isSelected = true;
     this.currentPlayer = this.players[index];
-    this.setPanelBet();
-    this.parent.panelBlock.displayAction = true;
-  }
-
-  setPanelBet(): void {
     this.panelBet = this.tableBet < this.currentPlayer.balance ? this.tableBet : this.currentPlayer.balance;
+    this.parent.panelBlock.displayAction = true;
   }
 
   actionCall() {
     this.currentPlayer.setBet(this.tableBet);
     this.currentPlayer.doneAction = true;
-    this.resetAction();
     this.nextPlayer();
   }
 
   actionRaise() {
+    if (this.panelBet === 0) {
+      this.panelBet = this.parent.blindBig;
+    }
     if (this.panelBet < this.tableBet * 2 && this.panelBet !== this.currentPlayer.balance + this.currentPlayer.bet) {
       this.panelBet = this.tableBet * 2 < this.currentPlayer.balance + this.currentPlayer.bet ? this.tableBet * 2 : this.currentPlayer.bet + this.currentPlayer.balance;
     } else {
       this.currentPlayer.setBet(this.panelBet);
       this.currentPlayer.doneAction = true;
       this.tableBet = this.panelBet;
-      this.resetAction();
       this.nextPlayer();
     }
   }
@@ -178,14 +195,7 @@ export class PlayersBlock {
   actionFold() {
     this.currentPlayer.isActive = false;
     this.currentPlayer.hideCards();
-    this.resetAction();
     this.nextPlayer();
-  }
-
-  resetAction() {
-    this.currentPlayer.isSelected = false;
-    this.panelBet = 0;
-    this.parent.panelBlock.displayAction = false;
   }
 
   /** CHECKERS */
@@ -211,20 +221,17 @@ export class PlayersBlock {
   checkAppointeHaveCards(): boolean {
     let answer = false;
     this.players.forEach(function (player) {
-      if (!player.empty && player.isAppointee &&
-        player.card_0.name !== 'invisible' && player.card_0.name !== 'back' && !player.card_0.isButton &&
-        player.card_1.name !== 'invisible' && player.card_1.name !== 'back' && !player.card_1.isButton) {
-        answer = true;
+      if (player.isAppointee) {
+        answer = player.checkCards();
       }
     });
-    console.log('Densta: $', 'getAppointeHaveCards: ', answer);
     return answer;
   }
 
   checkActivePlayers(): number {
     let answer = 0;
     this.players.forEach(function (player) {
-      if (!player.empty && player.isActive) {
+      if (player.isActive) {
         answer++;
       }
     });
@@ -248,23 +255,46 @@ export class PlayersBlock {
   }
 
   private nextPlayer(): void {
+    this.currentPlayer.isSelected = false;
+    this.panelBet = 0;
+    this.parent.panelBlock.displayAction = false;
+
     this.actionPlayerIndex++;
     this.actionPlayerIndex = this.convertIndex(this.actionPlayerIndex);
     let checkCount = 0;
+    let countAllIn = 0;
     while (checkCount <= this.players.length && (!this.players[this.actionPlayerIndex].isActive || this.players[this.actionPlayerIndex].allIn)) {
       checkCount++;
       this.actionPlayerIndex++;
       this.actionPlayerIndex = this.convertIndex(this.actionPlayerIndex);
     }
+    for (const player of this.players) {
+      if (player.allIn) {
+        countAllIn++;
+      }
+    }
     if (checkCount > this.players.length) {
-      console.error('Densta: $', 'game over'); // TODO: add game over method
+      console.warn('Densta: nextPlayer$', 'checkCount > this.players.length', checkCount, this.players.length);
+      this.parent.nextState();
       return null;
     }
+    if (countAllIn + 1 === this.checkActivePlayers()) {
+      console.warn('Densta: nextPlayer$', 'countAllIn + 1 === this.checkActivePlayers()', countAllIn + 1, this.checkActivePlayers());
+      this.parent.nextState();
+      return null;
+    }
+    if (this.checkActivePlayers() <= 1) {
+      console.warn('Densta: nextPlayer$', 'this.checkActivePlayers() <= 1', this.checkActivePlayers());
+      this.parent.nextState();
+      return null;
+    }
+
     if (this.players[this.actionPlayerIndex].doneAction && this.players[this.actionPlayerIndex].bet === this.tableBet) {
-        this.parent.nextState();
+      console.warn('Densta: nextPlayer$', 'this.players[this.actionPlayerIndex].doneAction', this.players[this.actionPlayerIndex].doneAction,
+      'this.players[this.actionPlayerIndex].bet === this.tableBet', this.players[this.actionPlayerIndex].bet, this.tableBet);
+      this.parent.nextState();
     } else {
       this.setSelected(this.actionPlayerIndex);
-      this.setPanelBet();
     }
   }
 
