@@ -33,10 +33,10 @@ export class Player {
 
   setBet(value: number): void {
     if (this.balance >= value) {
-      this.balance -= value - this.bet;
-      this.bet += value - this.bet;
+      this.balance = this.balance + this.bet - value;
+      this.bet = value;
     } else {
-      this.bet += this.balance - this.bet;
+      this.bet = this.balance + this.bet;
       this.balance = 0;
       this.allIn = true;
     }

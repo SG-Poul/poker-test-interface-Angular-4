@@ -152,14 +152,33 @@ export class PlayersBlock {
   }
 
   actionCall() {
-    this.currentPlayer.setBet(this.panelBet);
-
+    this.currentPlayer.setBet(this.tableBet);
+    this.currentPlayer.doneAction = true;
+    this.resetAction();
+    this.setNextActionPlayerIndex();
+    this.setSelected(this.actionPlayerIndex);
+    this.setPanelBet();
   }
   actionRaise() {
-    this.parent.playersBlock.actionRaise();
+    if (this.panelBet < this.tableBet * 2 && this.panelBet !== this.currentPlayer.balance + this.currentPlayer.bet) {
+      this.panelBet = this.tableBet * 2 < this.currentPlayer.balance + this.currentPlayer.bet ? this.tableBet * 2 : this.currentPlayer.bet + this.currentPlayer.balance;
+    } else {
+      this.currentPlayer.setBet(this.panelBet);
+      this.currentPlayer.doneAction = true;
+      this.tableBet = this.panelBet;
+      this.resetAction();
+      this.setNextActionPlayerIndex();
+      this.setSelected(this.actionPlayerIndex);
+      this.setPanelBet();
+    }
   }
   actionFold() {
-    this.parent.playersBlock.actionFold();
+    this.currentPlayer.isActive = false;
+    this.currentPlayer.hideCards();
+    this.resetAction();
+    this.setNextActionPlayerIndex();
+    this.setSelected(this.actionPlayerIndex);
+    this.setPanelBet();
   }
 
   resetAction() {
