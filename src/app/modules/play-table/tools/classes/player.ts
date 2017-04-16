@@ -10,6 +10,7 @@ export class Player {
   isSelected: boolean;
   isActive: boolean;
   doneAction: boolean;
+  allIn: boolean;
   card_0: Card;
   card_1: Card;
   name?: string;
@@ -21,6 +22,7 @@ export class Player {
     this.empty = true;
     this.isActive = false;
     this.doneAction = false;
+    this.allIn = false;
     this.isAppointee = false;
     this.isDealer = false;
     this.isSelected = false;
@@ -33,9 +35,10 @@ export class Player {
     if (this.balance >= value) {
       this.balance -= value;
       this.bet += value;
-      return true;
     } else {
-      return false;
+      this.bet += this.balance;
+      this.balance = 0;
+      this.allIn = true;
     }
   }
 

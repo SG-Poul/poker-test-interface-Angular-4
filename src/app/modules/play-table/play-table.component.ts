@@ -2,11 +2,9 @@
  * Created by Delvi-U on 08.04.2017.
  */
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Banker} from './tools/classes/banker';
 import {MainService} from '../../main.service';
 import {PanelBlock} from './tools/panelBlock';
 import {PlayersBlock} from './tools/playersBlock';
-import {Game} from './tools/game';
 
 export const STATE_INIT = 0;
 export const STATE_SELECT_PLAYERS = 1;
@@ -24,7 +22,6 @@ export const STATE_PREFLOP_SELECT_PLAYERS_ACTIONS = 5;
 export class PlayTableComponent implements AfterViewInit, OnInit {
   panelBlock: PanelBlock;
   playersBlock: PlayersBlock;
-  game: Game;
 
   server: number;
   gameType: number;
@@ -53,7 +50,6 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
   constructor(private mainService: MainService) {
     this.playersBlock = new PlayersBlock(this);
     this.panelBlock = new PanelBlock(this);
-    this.game = new Game(this);
 
     this.state = 0;
     this.blindAnte = 0;
@@ -67,11 +63,11 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
       item.card_0.getDOMElement();
       item.card_1.getDOMElement();
     });
-    this.game.banker.card_0.getDOMElement();
-    this.game.banker.card_1.getDOMElement();
-    this.game.banker.card_2.getDOMElement();
-    this.game.banker.card_3.getDOMElement();
-    this.game.banker.card_4.getDOMElement();
+    this.playersBlock.banker.card_0.getDOMElement();
+    this.playersBlock.banker.card_1.getDOMElement();
+    this.playersBlock.banker.card_2.getDOMElement();
+    this.playersBlock.banker.card_3.getDOMElement();
+    this.playersBlock.banker.card_4.getDOMElement();
   }
 
   updateState(state) {
@@ -130,7 +126,7 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         break;
       case STATE_PAY_BLINDS:
         this.playersBlock.displaySelectDealer = false;
-        this.game.payBlinds();
+        this.playersBlock.payBlinds();
         this.nextState();
         break;
       case STATE_PREFLOP_SELECT_APPOINTEE_CARD:
@@ -138,7 +134,7 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         this.playersBlock.giveCardsPreflop();
         break;
       case STATE_PREFLOP_SELECT_PLAYERS_ACTIONS:
-        this.game.preflopHanfler();
+        this.playersBlock.preflopHanfler();
         break;
       default:
         console.error('Densta: $', 'checkGameReady: no such stage');
@@ -155,7 +151,7 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
       case STATE_INIT:
         break;
       case STATE_SELECT_PLAYERS:
-        if (this.playersBlock.getActivePlayers().length >= 2) {
+        if (this.playersBlock.checkActivePlayers() >= 2) {
           this.panelBlock.displaySysGo = true;
         }
         break;
@@ -168,7 +164,7 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         break;
       case STATE_PREFLOP_SELECT_APPOINTEE_CARD:
         console.log('Densta: $', 'checkGameReady: ', this.state);
-        if (this.playersBlock.getAppointeHaveCards()) {
+        if (this.playersBlock.checkAppointeHaveCards()) {
           this.nextState();
         }
         break;

@@ -5,6 +5,7 @@ import {PlayTableComponent} from '../play-table.component';
 import {Button} from './button';
 import {Player} from './classes/player';
 import {Card} from './classes/card';
+import {Banker} from './classes/banker';
 // TEMP CONST FOR DEBUG
 const PLAYERS: Player[] = [
   new Player(0),
@@ -21,6 +22,8 @@ const PLAYERS: Player[] = [
 export class PlayersBlock {
   parent: PlayTableComponent;
   players = PLAYERS;
+  banker = new Banker;
+
   currentPlayer: Player;
   currentCard: Card;
 
@@ -36,7 +39,9 @@ export class PlayersBlock {
   displayPositions = false;
   displaySelectDealer = false;
 
+  actionPlayerIndex: number;
   panelBet: number;
+  tableBet: number;
 
   constructor(parent: PlayTableComponent) {
     this.parent = parent;
@@ -44,7 +49,7 @@ export class PlayersBlock {
 
   selectPlayerPosition(player: Player): void {
     this.currentPlayer = player;
-    if (this.needToSetAppointee()) {
+    if (this.checkSetAppointee()) {
       this.parent.panelBlock.displayAppointeePanel = true;
     } else {
       this.parent.panelBlock.displayPlayersPanel = true;
@@ -66,16 +71,6 @@ export class PlayersBlock {
     this.displaySelectDealer = false;
     this.parent.checkGameReady();
   }
-  changePlayerDealer(player: Player): void {
-    player.isDealer = false;
-    this.displaySelectDealer = true;
-    this.parent.checkGameReady();
-  }
-
-  changeBet() {
-    console.log('Densta: $', 'Method: changeBet');
-  }
-
   selectCard(card: Card, state: string): void {
     switch (state) {
       case 'over':
@@ -101,27 +96,86 @@ export class PlayersBlock {
     }
   }
 
-  /** check if there are no players to define appointee position */
-  needToSetAppointee(): any {
+  changePlayerDealer(player: Player): void { // TODO: remove
+    player.isDealer = false;
+    this.displaySelectDealer = true;
+    this.parent.checkGameReady();
+  }
+  changeBet() {
+    console.log('Densta: $', 'Method: changeBet');
+  }
+
+  /** game stages handler*/
+  payBlinds(): void {
+    for (let i in this.players) {
+      if (this.players[i].isActive) {
+        this.players[i].setBet(this.parent.blindAnte);
+      }
+    }
+    this.actionPlayerIndex = this.getDealer();
+    this.setNextActionPlayerIndex();
+    this.players[this.actionPlayerIndex].setBet(Number(this.parent.blindSmall));
+    this.setNextActionPlayerIndex();
+    this.players[this.actionPlayerIndex].setBet(Number(this.parent.blindBig));
+  }
+
+  giveCardsPreflop(): void {
+    for (const player of this.players) {
+      if (player.isActive) {
+        if (player.isAppointee) {
+          player.selectCards();
+        } else {
+          player.unknownCards();
+        }
+      }
+    }
+  }
+
+  preflopHanfler(): void {
+    this.tableBet = this.parent.blindBig;
+    this.actionPlayerIndex = this.getDealer();
+    this.setNextActionPlayerIndex(3);
+    this.setSelected(this.actionPlayerIndex);
+  }
+
+  /** ACTIONS */
+
+  setSelected(index: number): void {
+    this.players[index].isSelected = true;
+    this.currentPlayer = this.players[index];
+    this.setPanelBet();
+    this.parent.panelBlock.displayAction = true;
+  }
+
+  setPanelBet(): void {
+    this.panelBet = this.tableBet < this.currentPlayer.balance ? this.tableBet : this.currentPlayer.balance;
+  }
+
+  actionCall() {
+    this.currentPlayer.setBet(this.panelBet);
+
+  }
+  actionRaise() {
+    this.parent.playersBlock.actionRaise();
+  }
+  actionFold() {
+    this.parent.playersBlock.actionFold();
+  }
+
+  resetAction() {
+    this.currentPlayer.isSelected = false;
+    this.panelBet = 0;
+    this.parent.panelBlock.displayAction = false;
+  }
+
+  /** CHECKERS */
+  checkSetAppointee(): any {
     let answer = true;
     this.players.forEach(function (item) {
       if (!item.empty) {answer = false; }
     });
     return answer;
   }
-
-  giveCardsPreflop(): void {
-    this.players.forEach(function (item) {
-      if (item.isActive) {
-        if (item.isAppointee) {
-          item.selectCards();
-        } else {
-          item.unknownCards();
-        }
-      }
-    });
-  }
-
   checkActivePlayersBeforeStart() {
     for (let i in this.players) {
       if (this.players[i].balance < this.parent.blindBig + this.parent.blindAnte) {
@@ -130,48 +184,49 @@ export class PlayersBlock {
       }
     }
   }
-
-  getActivePlayers(): Player[] {
-    let answer = [];
-    this.players.forEach(function (player) {
-      if (!player.empty && player.isActive) {
-        answer.push(player);
-      }
-    });
-    return answer;
-  }
-
-  getDealer(): number {
-    let answer = -1;
-    this.players.forEach(function (item) {
-      if (!item.empty && item.isActive && item.isDealer) {
-        answer = item.position;
-      }
-    });
-    return answer;
-  }
-
-  getAppointeHaveCards(): boolean {
+  checkAppointeHaveCards(): boolean {
     let answer = false;
     this.players.forEach(function (player) {
       if (!player.empty && player.isAppointee &&
         player.card_0.name !== 'invisible' && player.card_0.name !== 'back' && !player.card_0.isButton &&
         player.card_1.name !== 'invisible' && player.card_1.name !== 'back' && !player.card_1.isButton) {
-          answer = true;
+        answer = true;
       }
     });
     console.log('Densta: $', 'getAppointeHaveCards: ', answer);
     return answer;
   }
-
-  setSelected(player: Player): void {
-    player.isSelected = true;
-    this.currentPlayer = player;
-    this.setPanelBet();
-    this.parent.panelBlock.displayAction = true;
+  checkActivePlayers(): number {
+    let answer = 0;
+    this.players.forEach(function (player) {
+      if (!player.empty && player.isActive) {
+        answer++;
+      }
+    });
+    return answer;
   }
 
-  setPanelBet(): void {
-    this.panelBet = this.parent.game.tableBet < this.currentPlayer.balance ? this.parent.game.tableBet : this.currentPlayer.balance;
+  /** TOOLS */
+  private convertIndex(index: number): number {
+    return index % this.players.length;
+  }
+  private setNextActionPlayerIndex(step: number = 1): void {
+    for (let i = 0; i < step; i++) {
+      this.actionPlayerIndex++;
+      this.actionPlayerIndex = this.convertIndex(this.actionPlayerIndex);
+      while (!this.players[this.actionPlayerIndex].isActive) {
+        this.actionPlayerIndex++;
+        this.actionPlayerIndex = this.convertIndex(this.actionPlayerIndex);
+      }
+    }
+  }
+  getDealer(): number {
+    let answer = -1;
+    this.players.forEach(function (item) {
+      if (item.isDealer) {
+        answer = item.position;
+      }
+    });
+    return answer;
   }
 }

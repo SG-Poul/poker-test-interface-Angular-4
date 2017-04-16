@@ -64,13 +64,13 @@ export class PanelBlock {
   }
 
   actionCall() {
-    console.log('Densta: $', 'Method: action call');
+    this.parent.playersBlock.actionCall();
   }
   actionRaise() {
-    console.log('Densta: $', 'Method: action raise');
+    this.parent.playersBlock.actionRaise();
   }
   actionFold() {
-    console.log('Densta: $', 'Method: action fold');
+    this.parent.playersBlock.actionFold();
   }
 
   panelSave(): void {
