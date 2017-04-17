@@ -153,14 +153,25 @@ export class PlayersBlock {
     this.actionPlayerIndex = this.getDealer();
     this.nextPlayer();
   }
-
-  closeRound(): void {
+  closeRound(isRiver: boolean = false): void {
     for (const player of this.players) {
         this.banker.balance += player.bet;
         player.bet = 0;
     }
-    this.actionPlayerIndex = null;
+    if (!isRiver) {
+      this.actionPlayerIndex = null;
+    }
     this.tableBet = 0;
+  }
+  showDownHandler(): void {
+    for (const player of this.players) {
+      player.doneAction = false;
+    }
+    this.tableBet = 0;
+    if (!this.actionPlayerIndex || !this.players[this.actionPlayerIndex].isActive) {
+      this.actionPlayerIndex = this.getDealer();
+    }
+    this.nextPlayerShowdown();
   }
 
   /** ACTIONS */
@@ -198,6 +209,23 @@ export class PlayersBlock {
     this.nextPlayer();
   }
 
+  actionFoldShowdown() {
+    this.currentPlayer.isActive = false;
+    this.currentPlayer.hideCards();
+    this.nextPlayerShowdown();
+  }
+
+  setSelectedShowdown(index: number): void {
+    this.players[index].isSelected = true;
+    this.currentPlayer = this.players[index];
+    if (this.currentPlayer.checkCards()) {
+      this.nextPlayerShowdown();
+      return null;
+    }
+    this.currentPlayer.selectCards();
+    this.parent.panelBlock.displayActionShowdown = true;
+  }
+
   /** CHECKERS */
   checkSetAppointee(): any {
     let answer = true;
@@ -228,13 +256,27 @@ export class PlayersBlock {
     return answer;
   }
 
+  checkAllCards(): boolean {
+    let answer = false;
+    let count = 0;
+    for (const player of this.players) {
+        if (player.checkCards()) {
+            count++;
+        }
+    }
+    if (count === this.checkActivePlayers()) {
+      answer = true;
+    }
+    return answer;
+  }
+
   checkActivePlayers(): number {
     let answer = 0;
-    this.players.forEach(function (player) {
+    for (const player of this.players) {
       if (player.isActive) {
         answer++;
       }
-    });
+    }
     return answer;
   }
 
@@ -295,6 +337,44 @@ export class PlayersBlock {
       this.parent.nextState();
     } else {
       this.setSelected(this.actionPlayerIndex);
+    }
+  }
+
+  nextPlayerShowdown() {
+    console.log('Densta: $', 'actionPlayerIndex: ', this.actionPlayerIndex);
+
+    this.currentPlayer.isSelected = false;
+    this.panelBet = 0;
+    this.parent.panelBlock.displayAction = false;
+    this.parent.panelBlock.displayActionShowdown = false;
+
+    this.actionPlayerIndex++;
+    this.actionPlayerIndex = this.convertIndex(this.actionPlayerIndex);
+    let checkCount = 0;
+    while (checkCount <= this.players.length && (!this.players[this.actionPlayerIndex].isActive)) {
+      console.log('Densta: $', 'nextPlayerShowdown: while');
+      checkCount++;
+      this.actionPlayerIndex++;
+      this.actionPlayerIndex = this.convertIndex(this.actionPlayerIndex);
+    }
+
+    if (checkCount > this.players.length) {
+      console.warn('Densta: nextPlayer$', 'checkCount > this.players.length', checkCount, this.players.length);
+      this.parent.nextState();
+      return null;
+    }
+    if (this.checkActivePlayers() <= 1) {
+      console.warn('Densta: nextPlayer$', 'this.checkActivePlayers() <= 1', this.checkActivePlayers());
+      this.parent.nextState();
+      return null;
+    }
+
+    if (this.players[this.actionPlayerIndex].doneAction) {
+      console.warn('Densta: nextPlayer$', 'this.players[this.actionPlayerIndex].doneAction', this.players[this.actionPlayerIndex].doneAction,
+        'this.players[this.actionPlayerIndex].bet === this.tableBet', this.players[this.actionPlayerIndex].bet, this.tableBet);
+      this.parent.nextState();
+    } else {
+      this.setSelectedShowdown(this.actionPlayerIndex);
     }
   }
 

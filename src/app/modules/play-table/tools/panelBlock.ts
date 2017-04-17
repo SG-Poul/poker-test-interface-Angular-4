@@ -20,7 +20,7 @@ export class PanelBlock {
   b_action_call = new Button('action_call', this.actionCall.bind(this), 'none');
   b_action_raise = new Button('action_raise', this.actionRaise.bind(this), 'none');
   b_action_fold = new Button('action_fold', this.actionFold.bind(this), 'none');
-  setBet: number;
+  b_action_foldShowdown = new Button('action_fold', this.actionFoldShowdown.bind(this), 'none');
 
   b_Ok =     new Button('ok',     this.panelSave.bind(this),      'player');
   b_Deny =   new Button('deny',   this.panelClose.bind(this),     'player');
@@ -34,6 +34,7 @@ export class PanelBlock {
   displaySysGo = false;
   displaySysReset = false;
   displayAction = false;
+  displayActionShowdown = false;
   displayInitialPanel = true;
   displayAppointeePanel = false;
   displayPlayersPanel = false;
@@ -63,14 +64,17 @@ export class PanelBlock {
    this.parent.updateState(0);
   }
 
-  actionCall() {
+  actionCall(): void {
     this.parent.playersBlock.actionCall();
   }
-  actionRaise() {
+  actionRaise(): void {
     this.parent.playersBlock.actionRaise();
   }
-  actionFold() {
+  actionFold(): void {
     this.parent.playersBlock.actionFold();
+  }
+  actionFoldShowdown(): void {
+    this.parent.playersBlock.actionFoldShowdown();
   }
 
   panelSave(): void {

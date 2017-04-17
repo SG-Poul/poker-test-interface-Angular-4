@@ -23,6 +23,7 @@ export const STATE_RIVER_SELECT_DESK_CARDS = 13;
 export const STATE_RIVER_SELECT_PLAYERS_ACTIONS = 14;
 export const STATE_RIVER_CLOSE = 15;
 export const STATE_SHOWDOWN = 16;
+export const STATE_GAMEOVER = 17;
 
 
 @Component({
@@ -183,10 +184,14 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
         this.playersBlock.mainHandler();
         break;
       case STATE_RIVER_CLOSE:
-        this.playersBlock.closeRound();
+        this.playersBlock.closeRound(true);
         this.nextState();
         break;
       case STATE_SHOWDOWN:
+        this.playersBlock.showDownHandler();
+        break;
+      case STATE_GAMEOVER:
+        console.error('Densta: $', 'STATE_GAMEOVER');
         break;
       default:
         console.error('Densta: $', 'checkGameReady: no such stage');
@@ -252,6 +257,14 @@ export class PlayTableComponent implements AfterViewInit, OnInit {
       case STATE_RIVER_CLOSE:
         break;
       case STATE_SHOWDOWN:
+        if (this.playersBlock.checkAllCards()) {
+          this.nextState();
+        } else if (this.playersBlock.currentPlayer.checkCards()) {
+          this.playersBlock.nextPlayerShowdown();
+        }
+        break;
+      case STATE_GAMEOVER:
+        console.error('Densta: $', 'STATE_GAMEOVER');
         break;
       default:
         console.error('Densta: $', 'checkGameReady: no such stage');

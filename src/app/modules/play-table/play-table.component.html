@@ -34,6 +34,12 @@
       </div>
     </div>
 
+    <img *ngIf="panelBlock.displayActionShowdown" [src]="panelBlock.b_action_foldShowdown.srcNone" [class]="panelBlock.b_action_foldShowdown.cssClass"
+         (mouseover)="panelBlock.b_action_foldShowdown.onOver($event)"
+         (mousedown)="panelBlock.b_action_foldShowdown.onDown($event)"
+         (mouseleave)="panelBlock.b_action_foldShowdown.onOut($event)"
+         (mouseup)="panelBlock.b_action_foldShowdown.onUp($event, 'd')">
+
     <div *ngFor="let player of playersBlock.players" class="players" id="p{{player.position}}">
       <div *ngIf="playersBlock.displayPositions && player.empty">
         <img [src]="playersBlock.b_Position.srcNone" [class]="playersBlock.b_Position.cssClass"
